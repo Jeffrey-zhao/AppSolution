@@ -8,6 +8,7 @@ using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App.Common;
 using App.Models.Sys;
 using Microsoft.Practices.Unity;
 
@@ -25,14 +26,14 @@ namespace App.BLL
         /// <param name="pager">JQgrid分页</param>
         /// <param name="queryStr">搜索条件</param>
         /// <returns>列表</returns>
-        public List<SysSampleModel> GetList(int page,int rows,string sort,string order,ref int total)
+        public List<SysSampleModel> GetList(ref GridPager pager,string queryStr)
         {
-            IQueryable<SysSample> queryData = Rep.GetList(db);
+            IQueryable<SysSample> queryData = Rep.GetList(db,queryStr);
 
             //排序
-            if (order == "desc")
+            if (pager.Order == "desc")
             {
-                switch (order)
+                switch (pager.Sort)
                 {
                     case "Id":
                         queryData = queryData.OrderByDescending(c => c.Id);
@@ -48,7 +49,7 @@ namespace App.BLL
             else
             {
 
-                switch (order)
+                switch (pager.Sort)
                 {
                     case "Id":
                         queryData = queryData.OrderBy(c => c.Id);
@@ -62,21 +63,21 @@ namespace App.BLL
                 }
             }
 
-            return CreateModelList(ref queryData,page,rows,ref total);
+            return CreateModelList(ref queryData,ref pager);
         }
 
-        private List<SysSampleModel> CreateModelList(ref IQueryable<SysSample> queryData,int page,int rows,ref int total)
+        private List<SysSampleModel> CreateModelList(ref IQueryable<SysSample> queryData,ref GridPager pager)
         {
-            total = queryData.Count();
-            if (total > 0)
+            pager.TotalRows = queryData.Count();
+            if (pager.TotalPages > 0)
             {
-                if (page <= 1)
+                if (pager.Page <= 1)
                 {
-                    queryData = queryData.Take(rows);
+                    queryData = queryData.Take(pager.Rows);
                 }
                 else
                 {
-                    queryData = queryData.Skip((page - 1) * rows).Take(rows);
+                    queryData = queryData.Skip((pager.Page - 1) * pager.Rows).Take(pager.Rows);
                 }
             }
             List<SysSampleModel> modelList = (from r in queryData

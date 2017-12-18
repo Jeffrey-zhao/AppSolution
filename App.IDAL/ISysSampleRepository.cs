@@ -14,7 +14,7 @@ namespace App.IDAL
         /// </summary>
         /// <param name="db">数据库上下文</param>
         /// <returns>数据列表</returns>
-        IQueryable<SysSample> GetList(AppDBContainer db);
+        IQueryable<SysSample> GetList(AppDBContainer db,string queryStr);
         /// <summary>
         /// 创建一个实体
         /// </summary>
