@@ -67,6 +67,7 @@
     <Compile Include="SysSample.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys\SysSampleModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="AppDB.edmx">

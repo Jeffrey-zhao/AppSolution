@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.Practices.Unity;
 using WebGrease.Configuration;
+using App.Core;
 
 namespace App.Admin
 {
@@ -18,6 +20,11 @@ namespace App.Admin
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleTable.EnableOptimizations = true;
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //inject IOC
+            var container = new UnityContainer();
+            DependencyRegisterType.Container_Sys(ref container);
+            DependencyResolver.SetResolver(new UnityDepencyResolver(container));
         }
     }
 }

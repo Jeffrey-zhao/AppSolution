@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AppDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="SysSample">
+        <EntityType Name="SysSamples">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -14,11 +14,11 @@
           <Property Name="Age" Type="int" />
           <Property Name="Bir" Type="datetime" />
           <Property Name="Photo" Type="varchar" MaxLength="50" />
-          <Property Name="Note" Type="text" />
+          <Property Name="Note" Type="varchar(max)" />
           <Property Name="CreateTime" Type="datetime" />
         </EntityType>
         <EntityContainer Name="AppDBStoreContainer">
-          <EntitySet Name="SysSample" EntityType="Self.SysSample" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SysSamples" EntityType="Self.SysSamples" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -26,12 +26,12 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AppDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="AppDBContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="SysSamples" EntityType="AppDB.SysSample" />
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="SysSample">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" />
           <Property Name="Bir" Type="DateTime" Precision="3" />
@@ -39,30 +39,27 @@
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="AppDB" />
-        <Alias Key="Target" Value="AppDB.Store" />
-        <EntityContainerMapping CdmEntityContainer="AppDBContainer" StorageEntityContainer="AppDBStoreContainer">
-          <EntitySetMapping Name="SysSamples">
-            <EntityTypeMapping TypeName="AppDB.SysSample">
-              <MappingFragment StoreEntitySet="SysSample">
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Bir" ColumnName="Bir" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppDBStoreContainer" CdmEntityContainer="AppDBContainer">
+    <EntitySetMapping Name="SysSamples">
+      <EntityTypeMapping TypeName="IsTypeOf(AppDB.SysSample)">
+        <MappingFragment StoreEntitySet="SysSamples">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Bir" ColumnName="Bir" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">

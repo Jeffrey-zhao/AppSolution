@@ -16,13 +16,13 @@ namespace App.Models
     public partial class AppDBContainer : DbContext
     {
         public AppDBContainer()
-            : base("name=DefaultConnection")
+            : base("name=AppDBContainer")
         {
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            //throw new UnintentionalCodeFirstException();
         }
     
         public DbSet<SysSample> SysSamples { get; set; }
