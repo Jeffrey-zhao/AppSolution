@@ -16,11 +16,10 @@ namespace App.DAL
         ///</summary>
         /// <param name="db">数据库上下文</param>
         /// <returns>数据列表</returns>
-        public IQueryable<SysSample> GetList(AppDBContainer db,string queryStr)
+        public IQueryable<SysSample> GetList(AppDBContainer db)
         {
             IQueryable<SysSample>
-                list = db.SysSamples.Where(x=>x.Name.Contains(queryStr)||x.Note.Contains(queryStr))
-                .AsQueryable();
+                list = db.SysSamples.AsQueryable();
             return list;
         }
         /// <summary>

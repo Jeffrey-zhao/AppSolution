@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SysExceptionRepository.cs" />
+    <Compile Include="SysLogRepository.cs" />
     <Compile Include="HomeRepository.cs" />
     <Compile Include="SysSampleRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

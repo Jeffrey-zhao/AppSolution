@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using App.Common;
 using App.Models.Sys;
 using Microsoft.Practices.Unity;
+using App.BLL.Core;
 
 namespace App.BLL
 {
@@ -28,8 +29,16 @@ namespace App.BLL
         /// <returns>列表</returns>
         public List<SysSampleModel> GetList(ref GridPager pager,string queryStr)
         {
-            IQueryable<SysSample> queryData = Rep.GetList(db,queryStr);
-
+            IQueryable<SysSample> queryData=Rep.GetList(db);
+            if (!string.IsNullOrWhiteSpace(queryStr))
+            {
+                queryData = queryData.Where(x => x.Name.Contains(queryStr) || x.Note.Contains(queryStr));
+                pager.TotalRows = queryData.Count();
+            }
+            else
+            {
+                pager.TotalRows = queryData.Count();
+            }            
             //排序
             if (pager.Order == "desc")
             {
@@ -103,13 +112,14 @@ namespace App.BLL
         /// <param name="errors">持久的错误信息</param>
         /// <param name="model">模型</param>
         /// <returns>是否成功</returns>
-        public bool Create(SysSampleModel model)
+        public bool Create(ref ValidationErrors errors,SysSampleModel model)
         {
             try
             {
                 SysSample entity = Rep.GetById(model.Id);
                 if (entity != null)
                 {
+                    errors.Add("主键重复");
                     return false;
                 }
 
@@ -128,13 +138,14 @@ namespace App.BLL
                 }
                 else
                 {
-
+                    errors.Add("插入失败");
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                //ExceptionHander.WriteException(ex);
+                errors.Add("插入失败");
+                Exceptionhandler.WriteException(ex);
                 return false;
             }
         }

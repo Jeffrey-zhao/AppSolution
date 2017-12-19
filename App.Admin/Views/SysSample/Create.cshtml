@@ -11,23 +11,25 @@
 <script type="text/javascript">
     $(function () {
         $("#btnSave").click(function () {
-           
-            $.ajax({
-                url: "/SysSample/Create",
-                type: "Post",
-                data: $("#CreateForm").serialize(),
-                dataType: "json",
-                success: function (data) {
-                    if (data == 1) {
-                        window.parent.frameReturnByMes("成功");
-                        window.parent.frameReturnByReload(true);
-                        window.parent.frameReturnByClose();
+            if ($("#CreateForm").valid()) {
+                $.ajax({
+                    url: "/SysSample/Create",
+                    type: "Post",
+                    data: $("#CreateForm").serialize(),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data == 1) {
+                            window.parent.frameReturnByMes(data.Message);
+                            window.parent.frameReturnByReload(true);
+                            window.parent.frameReturnByClose();
+                        }
+                        else {
+                            window.parent.frameReturnByMes(data.Message);
+                        }
                     }
-                    else {
-                        window.parent.frameReturnByMes("失败");
-                    }
-                }
-            });
+                });
+            }
+            return false;
         });
     });
 </script>

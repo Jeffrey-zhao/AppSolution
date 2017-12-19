@@ -9,6 +9,7 @@ using App.Common;
 using App.Models;
 using App.Models.Sys;
 using Microsoft.Practices.Unity;
+using App.Admin.Core;
 
 namespace App.Admin.Controllers
 {
@@ -26,10 +27,6 @@ namespace App.Admin.Controllers
         [HttpPost]
         public JsonResult GetList(GridPager pager,string queryStr="")
         {
-            //if (string.IsNullOrWhiteSpace(queryStr))
-            //{
-            //    queryStr = "";
-            //}
             IEnumerable<SysSampleModel> list = m_BLL.GetList(ref pager,queryStr);
             var json = new
             {
@@ -59,13 +56,17 @@ namespace App.Admin.Controllers
         [HttpPost]
         public JsonResult Create(SysSampleModel model)
         {
-            if (m_BLL.Create(model))
+            ValidationErrors errors = new ValidationErrors();
+            if (m_BLL.Create(ref errors,model))
             {
-                return Json(1, JsonRequestBehavior.AllowGet);
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name, "成功", "创建", "样例程序");
+                return Json(JsonHandler.CreateMessage(1,"插入成功"), JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(0, JsonRequestBehavior.AllowGet);
+                string ErrorCol = errors.Error;
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name+","+ErrorCol, "失败", "创建", "样例程序");
+                return Json(JsonHandler.CreateMessage(0,"插入失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -90,7 +91,7 @@ namespace App.Admin.Controllers
             }
         }
 
-        //delete post
+        //delete 
         public JsonResult Delete(string id)
         {
             if (!string.IsNullOrWhiteSpace(id))

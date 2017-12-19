@@ -147,7 +147,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SysExceptionController.cs" />
+    <Compile Include="Controllers\SysLogController.cs" />
     <Compile Include="Controllers\SysSampleController.cs" />
+    <Compile Include="Core\LogHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -525,6 +528,7 @@
     <Content Include="Content\Images\Logo.psd" />
     <Content Include="Content\Images\sunny\Logo.psd" />
     <Content Include="Content\Images\sunny\未标题-1.psd" />
+    <Content Include="Scripts\date.format.js" />
     <Content Include="Scripts\easyloader.js" />
     <Content Include="Scripts\home.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -579,6 +583,11 @@
     <Content Include="Views\SysSample\Edit.cshtml" />
     <Content Include="Views\SysSample\Details.cshtml" />
     <Content Include="Views\Shared\_Index_LayoutEdit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\SysLog\Details.cshtml" />
+    <Content Include="Views\SysLog\Index.cshtml" />
+    <Content Include="Views\SysException\Index.cshtml" />
+    <Content Include="Views\SysException\Details.cshtml" />
     <None Include="Views\SysSample\Index.cshtml" />
     <Content Include="Views\Shared\_Index_Layout.cshtml" />
   </ItemGroup>
@@ -586,7 +595,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Library\" />
-    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -607,9 +615,17 @@
       <Project>{83469E07-E7D3-4750-A8C0-16696794AEF7}</Project>
       <Name>App.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\App.DAL\App.DAL.csproj">
+      <Project>{8587bd6f-1e61-4a0f-be5f-bfb7bbc604f7}</Project>
+      <Name>App.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\App.IBLL\App.IBLL.csproj">
       <Project>{620652d1-fba9-4eb7-96b9-610f59e71de1}</Project>
       <Name>App.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.IDAL\App.IDAL.csproj">
+      <Project>{106EB955-3408-4A69-A8EB-861E1DD291AA}</Project>
+      <Name>App.IDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\App.Models\App.Models.csproj">
       <Project>{f60d30ec-7db9-451c-81e4-db3423d77818}</Project>

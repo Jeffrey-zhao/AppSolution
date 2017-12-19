@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISysExceptionBLL.cs" />
+    <Compile Include="ISysLogBLL.cs" />
     <Compile Include="IHomeBLL.cs" />
     <Compile Include="ISysSampleBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
