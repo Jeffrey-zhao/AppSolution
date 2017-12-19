@@ -64,9 +64,13 @@
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysModule.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="SysSample.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys\AccountModel.cs" />
     <Compile Include="Sys\SysSampleModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +97,7 @@
       <LastGenOutput>AppDB.cs</LastGenOutput>
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Content>
+    <Content Include="Sqls\InitialSysModule.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -23,8 +23,10 @@ namespace App.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //throw new UnintentionalCodeFirstException();
+            base.OnModelCreating(modelBuilder);
         }
     
         public DbSet<SysSample> SysSamples { get; set; }
+        public DbSet<SysModule> SysModules { get; set; }
     }
 }

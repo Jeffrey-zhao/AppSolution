@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1d214dc9d28e4e769652ea0f99bc1cd1" Name="Diagram1" >
         <EntityTypeShape EntityType="AppDB.SysSample" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AppDB.SysModule" Width="1.5" PointX="3.25" PointY="0.75" />
+        <AssociationConnector Association="AppDB.FK_SysModule_SysModule" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
