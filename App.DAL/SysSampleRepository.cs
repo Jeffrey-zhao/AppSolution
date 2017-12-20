@@ -19,7 +19,7 @@ namespace App.DAL
         public IQueryable<SysSample> GetList(AppDBContainer db)
         {
             IQueryable<SysSample>
-                list = db.SysSamples.AsQueryable();
+                list = db.SysSample.AsQueryable();
             return list;
         }
         /// <summary>
@@ -44,7 +44,7 @@ namespace App.DAL
         {
             using (AppDBContainer db = new AppDBContainer())
             {
-                SysSample entity = db.SysSamples.SingleOrDefault(a => a.Id == id);
+                SysSample entity = db.SysSample.SingleOrDefault(a => a.Id == id);
                 db.Set<SysSample>().Remove(entity);
                 return db.SaveChanges();
             }
@@ -73,7 +73,7 @@ namespace App.DAL
         {
             using (AppDBContainer db = new AppDBContainer())
             {
-                return db.SysSamples.SingleOrDefault(a => a.Id == id);
+                return db.SysSample.SingleOrDefault(a => a.Id == id);
             }
         }
         /// <summary>

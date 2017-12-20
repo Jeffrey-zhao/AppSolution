@@ -223,7 +223,7 @@ namespace App.BLL
         /// <returns>是否存在</returns>
         public bool IsExists(string id)
         {
-            if (DB.SysSamples.SingleOrDefault(a => a.Id == id) != null)
+            if (DB.SysSample.SingleOrDefault(a => a.Id == id) != null)
             {
                 return true;
             }

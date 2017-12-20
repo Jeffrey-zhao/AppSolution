@@ -16,7 +16,7 @@ namespace App.DAL
             {
                 var menus =
                 (
-                    from m in db.SysModules
+                    from m in db.SysModule
                     where m.ParentId == moduleId
                     where m.Id != "0"
                     select m

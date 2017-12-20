@@ -33,7 +33,7 @@ namespace App.BLL.Core
                         CreateTime = ResultHelper.NowTime
 
                     };
-                    db.SysExceptions.Add(model);
+                    db.SysException.Add(model);
                     db.SaveChanges();
                 }
             }

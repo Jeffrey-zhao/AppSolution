@@ -17,7 +17,7 @@ namespace App.DAL
         /// <returns>集合</returns>
         public IQueryable<SysLog> GetList(AppDBContainer db)
         {
-            IQueryable<SysLog> list = db.SysLogs.AsQueryable();
+            IQueryable<SysLog> list = db.SysLog.AsQueryable();
             return list;
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace App.DAL
             using (AppDBContainer db = new AppDBContainer())
             {
                 //db.SysLogs.AddObject(entity);
-                db.SysLogs.Add(entity);
+                db.SysLog.Add(entity);
                 return db.SaveChanges();
             }
 
@@ -43,14 +43,14 @@ namespace App.DAL
         /// <param name="deleteCollection">集合</param>
         public int Delete(AppDBContainer db, string id)
         {
-            IQueryable<SysLog> collection = from f in db.SysLogs
+            IQueryable<SysLog> collection = from f in db.SysLog
                                             where f.Id==id
                                             select f;
             
             foreach (var deleteItem in collection)
             {
                 //db.SysLogs.DeleteObject(deleteItem);
-                db.SysLogs.Remove(deleteItem);
+                db.SysLog.Remove(deleteItem);
             }
             return db.SaveChanges();
         }
@@ -63,7 +63,7 @@ namespace App.DAL
         {
             using (AppDBContainer db = new AppDBContainer())
             {
-                return db.SysLogs.SingleOrDefault(a => a.Id == id);
+                return db.SysLog.SingleOrDefault(a => a.Id == id);
             }
         }
 

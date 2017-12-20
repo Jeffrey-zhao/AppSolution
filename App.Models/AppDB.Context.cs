@@ -12,7 +12,8 @@ namespace App.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.Entity.ModelConfiguration.Conventions;
+
     public partial class AppDBContainer : DbContext
     {
         public AppDBContainer()
@@ -22,12 +23,17 @@ namespace App.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //throw new UnintentionalCodeFirstException();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();//移除复数表名的契约
         }
     
-        public DbSet<SysSample> SysSamples { get; set; }
-        public DbSet<SysModule> SysModules { get; set; }
-        public DbSet<SysLog> SysLogs { get; set; }
-        public DbSet<SysException> SysExceptions { get; set; }
+        public DbSet<SysException> SysException { get; set; }
+        public DbSet<SysLog> SysLog { get; set; }
+        public DbSet<SysModule> SysModule { get; set; }
+        public DbSet<SysModuleOperate> SysModuleOperate { get; set; }
+        public DbSet<SysRight> SysRight { get; set; }
+        public DbSet<SysRightOperate> SysRightOperate { get; set; }
+        public DbSet<SysRole> SysRole { get; set; }
+        public DbSet<SysSample> SysSample { get; set; }
+        public DbSet<SysUser> SysUser { get; set; }
     }
 }

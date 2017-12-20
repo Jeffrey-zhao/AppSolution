@@ -17,7 +17,7 @@ namespace App.DAL
         /// <returns>集合</returns>
         public IQueryable<SysException> GetList(AppDBContainer db)
         {
-            IQueryable<SysException> list = db.SysExceptions.AsQueryable();
+            IQueryable<SysException> list = db.SysException.AsQueryable();
             return list;
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace App.DAL
             using (AppDBContainer db = new AppDBContainer())
             {
                 //db.SysExceptions.AddObject(entity);
-                db.SysExceptions.Add(entity);
+                db.SysException.Add(entity);
                 return db.SaveChanges();
             }
 
@@ -43,8 +43,8 @@ namespace App.DAL
         /// <param name="deleteCollection">集合</param>
         public int Delete(AppDBContainer db, string id)
         {
-            SysException entity = db.SysExceptions.SingleOrDefault(x => x.Id == id);
-            db.SysExceptions.Remove(entity);
+            SysException entity = db.SysException.SingleOrDefault(x => x.Id == id);
+            db.SysException.Remove(entity);
             return db.SaveChanges();
         }
         /// <summary>
@@ -56,7 +56,7 @@ namespace App.DAL
         {
             using (AppDBContainer db = new AppDBContainer())
             {
-                return db.SysExceptions.SingleOrDefault(a => a.Id == id);
+                return db.SysException.SingleOrDefault(a => a.Id == id);
             }
         }
 

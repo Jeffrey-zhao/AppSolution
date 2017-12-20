@@ -4,13 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1d214dc9d28e4e769652ea0f99bc1cd1" Name="Diagram1" >
-        <EntityTypeShape EntityType="AppDB.SysSample" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="AppDB.SysModule" Width="1.5" PointX="3.25" PointY="0.75" />
+      <Diagram DiagramId="4bc74a7d17034eff87c9d96a4ad0cc20" Name="Diagram1" >
+        <EntityTypeShape EntityType="AppDB.SysException" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="AppDB.SysLog" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AppDB.SysModule" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="AppDB.SysModuleOperate" Width="1.5" PointX="3" PointY="2.625" />
+        <EntityTypeShape EntityType="AppDB.SysRight" Width="1.5" PointX="6" PointY="2.625" />
+        <EntityTypeShape EntityType="AppDB.SysRightOperate" Width="1.5" PointX="8.25" PointY="2.875" />
+        <EntityTypeShape EntityType="AppDB.SysRole" Width="1.5" PointX="3.75" PointY="7.625" />
+        <EntityTypeShape EntityType="AppDB.SysSample" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="AppDB.SysUser" Width="1.5" PointX="6" PointY="6" />
         <AssociationConnector Association="AppDB.FK_SysModule_SysModule" />
-        <EntityTypeShape EntityType="AppDB.SysLog" Width="1.5" PointX="7.125" PointY="0.75" />
-        <EntityTypeShape EntityType="AppDB.SysException" Width="1.5" PointX="5.375" PointY="0.75" />
-        </Diagram>
+        <AssociationConnector Association="AppDB.FK_SysModuleOperate_SysModule" />
+        <AssociationConnector Association="AppDB.FK_SysRight_SysModule" />
+        <AssociationConnector Association="AppDB.FK_SysRight_SysRole" />
+        <AssociationConnector Association="AppDB.FK_SysRightOperate_SysRight" />
+        <AssociationConnector Association="AppDB.SysRoleSysUser" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

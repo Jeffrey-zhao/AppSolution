@@ -74,7 +74,22 @@
     <Compile Include="SysModule.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="SysModuleOperate.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysRight.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysRightOperate.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysRole.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="SysSample.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysUser.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Sys\AccountModel.cs" />
@@ -88,8 +103,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AppDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
     <None Include="AppDB.edmx.diagram">
       <DependentUpon>AppDB.edmx</DependentUpon>
@@ -108,8 +121,10 @@
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Content>
     <Content Include="Sqls\InitialSysModule.sql" />
+    <Content Include="Sqls\Permission.sql" />
     <Content Include="Sqls\SysException.sql" />
     <Content Include="Sqls\SysLog.sql" />
+    <Content Include="Sqls\SysSample.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

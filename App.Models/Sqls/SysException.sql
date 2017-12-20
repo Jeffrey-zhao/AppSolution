@@ -10,7 +10,7 @@ GO
 SET ANSI_PADDING ON
 GO
 
-CREATE TABLE [dbo].[SysExceptions](
+CREATE TABLE [dbo].[SysException](
     [Id] [varchar](50) NOT NULL, --GUID
     [HelpLink] [varchar](500) NULL,--帮助链接
     [Message] [varchar](500) NULL,--异常信息

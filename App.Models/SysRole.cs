@@ -12,29 +12,21 @@ namespace App.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class SysModule
+    public partial class SysRole
     {
-        public SysModule()
+        public SysRole()
         {
-            this.SysModuleOperate = new HashSet<SysModuleOperate>();
             this.SysRight = new HashSet<SysRight>();
+            this.SysUser = new HashSet<SysUser>();
         }
     
         public string Id { get; set; }
         public string Name { get; set; }
-        public string EnglishName { get; set; }
-        public string ParentId { get; set; }
-        public string Url { get; set; }
-        public string Iconic { get; set; }
-        public Nullable<int> Sort { get; set; }
-        public string Remark { get; set; }
-        public Nullable<bool> State { get; set; }
+        public string Description { get; set; }
+        public System.DateTime CreateTime { get; set; }
         public string CreatePerson { get; set; }
-        public Nullable<System.DateTime> CreateTime { get; set; }
-        public bool IsLast { get; set; }
-        public byte[] Version { get; set; }
     
-        public virtual ICollection<SysModuleOperate> SysModuleOperate { get; set; }
         public virtual ICollection<SysRight> SysRight { get; set; }
+        public virtual ICollection<SysUser> SysUser { get; set; }
     }
 }
