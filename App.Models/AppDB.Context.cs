@@ -23,9 +23,12 @@ namespace App.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();//移除复数表名的契约
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            // 多对多映射对应表
+            modelBuilder.Configurations.Add(new SysRoleSysUserConfigurationMapping());
         }
-    
+
         public DbSet<SysException> SysException { get; set; }
         public DbSet<SysLog> SysLog { get; set; }
         public DbSet<SysModule> SysModule { get; set; }

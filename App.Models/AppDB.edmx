@@ -644,45 +644,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SysUser">
-            <EntityTypeMapping TypeName="AppDB.SysUser">
-              <MappingFragment StoreEntitySet="SysUser">
-                <ScalarProperty Name="Attach" ColumnName="Attach" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="JobState" ColumnName="JobState" />
-                <ScalarProperty Name="Expertise" ColumnName="Expertise" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="DepId" ColumnName="DepId" />
-                <ScalarProperty Name="Degree" ColumnName="Degree" />
-                <ScalarProperty Name="Professional" ColumnName="Professional" />
-                <ScalarProperty Name="School" ColumnName="School" />
-                <ScalarProperty Name="Native" ColumnName="Native" />
-                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
-                <ScalarProperty Name="Political" ColumnName="Political" />
-                <ScalarProperty Name="Marital" ColumnName="Marital" />
-                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Village" ColumnName="Village" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Province" ColumnName="Province" />
-                <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
-                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
-                <ScalarProperty Name="QQ" ColumnName="QQ" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="Card" ColumnName="Card" />
-                <ScalarProperty Name="TrueName" ColumnName="TrueName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="SysRoleSysUser" TypeName="AppDB.SysRoleSysUser" StoreEntitySet="SysRoleSysUser">
             <EndProperty Name="SysUser">
               <ScalarProperty Name="Id" ColumnName="SysUserId" />
@@ -691,6 +652,11 @@
               <ScalarProperty Name="Id" ColumnName="SysRoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="SysUser">
+            <EntityTypeMapping TypeName="IsTypeOf(AppDB.SysUser)">
+              <MappingFragment StoreEntitySet="SysRoleSysUser" />
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -15,9 +15,10 @@ namespace App.BLL
     {
         [Dependency]
         public IHomeRepository repo { get; set; }
-        public List<SysModule> GetMenuByPersonId(string moduleId)
+
+        public List<SysModule> GetMenuByPersonId(string personId,string moduleId)
         {
-            return repo.GetMenuByPersonId(moduleId);
+            return repo.GetMenuByPersonId(personId,moduleId);
         }
     }
 }
