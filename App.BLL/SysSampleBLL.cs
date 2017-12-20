@@ -37,40 +37,40 @@ namespace App.BLL
             else
             {
                 pager.TotalRows = queryData.Count();
-            }            
-            //排序
-            if (pager.Order == "desc")
-            {
-                switch (pager.Sort)
-                {
-                    case "Id":
-                        queryData = queryData.OrderByDescending(c => c.Id);
-                        break;
-                    case "Name":
-                        queryData = queryData.OrderByDescending(c => c.Name);
-                        break;
-                    default:
-                        queryData = queryData.OrderByDescending(c => c.CreateTime);
-                        break;
-                }
             }
-            else
-            {
+            ////排序
+            //if (pager.Order == "desc")
+            //{
+            //    switch (pager.Sort)
+            //    {
+            //        case "Id":
+            //            queryData = queryData.OrderByDescending(c => c.Id);
+            //            break;
+            //        case "Name":
+            //            queryData = queryData.OrderByDescending(c => c.Name);
+            //            break;
+            //        default:
+            //            queryData = queryData.OrderByDescending(c => c.CreateTime);
+            //            break;
+            //    }
+            //}
+            //else
+            //{
 
-                switch (pager.Sort)
-                {
-                    case "Id":
-                        queryData = queryData.OrderBy(c => c.Id);
-                        break;
-                    case "Name":
-                        queryData = queryData.OrderBy(c => c.Name);
-                        break;
-                    default:
-                        queryData = queryData.OrderBy(c => c.CreateTime);
-                        break;
-                }
-            }
-
+            //    switch (pager.Sort)
+            //    {
+            //        case "Id":
+            //            queryData = queryData.OrderBy(c => c.Id);
+            //            break;
+            //        case "Name":
+            //            queryData = queryData.OrderBy(c => c.Name);
+            //            break;
+            //        default:
+            //            queryData = queryData.OrderBy(c => c.CreateTime);
+            //            break;
+            //    }
+            //}
+            LinqHelper.DataSorting(queryData, pager.Sort, pager.Order);
             return CreateModelList(ref queryData,ref pager);
         }
 

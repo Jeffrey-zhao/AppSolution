@@ -121,6 +121,7 @@
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Content>
     <Content Include="Sqls\InitialSysModule.sql" />
+    <Content Include="Sqls\initPermission.sql" />
     <Content Include="Sqls\Permission.sql" />
     <Content Include="Sqls\SysException.sql" />
     <Content Include="Sqls\SysLog.sql" />

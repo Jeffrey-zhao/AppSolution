@@ -74,7 +74,15 @@
         }
         $("#Loading").show();
 
-        alert(1);
+        $.post('/Account/Login', { userName: $("#UserName").val(), password: $("#Password").val(), code: $("#ValidateCode").val() },
+            function (data) {
+                if (data.Type == "1") {
+                    window.location = "/Home/Index"
+                } else {
+                    $("#mes").html(data.Message);
+                }
+                $("#Loading").hide();
+            }, "json");
         return false;
     }
 </script>
@@ -123,7 +131,7 @@
                         </td>
                         <td>
                             <input style="width: 50px" type="text" name="ValidateCode" id="ValidateCode" />
-                            <img id="codeImg" alt="刷新验证码！" style="margin-bottom: -8px; cursor: pointer;" src="~/Core/VerifyCode.ashx.cs" onclick="this.src=this.src+'?'" />
+                            <img id="codeImg" alt="刷新验证码！" style="margin-bottom: -8px; cursor: pointer;" src="/Core/VerifyCodeHandler.ashx" onclick="this.src=this.src+'?'" />
                             <a href="javascript:$('#codeImg').trigger('click')">看不清？</a>
                         </td>
                     </tr>

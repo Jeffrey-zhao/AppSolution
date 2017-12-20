@@ -9,7 +9,7 @@ using System.Web.SessionState;
 
 namespace App.Admin.Core
 {
-    public class VerifyCode : IHttpHandler, IRequiresSessionState
+    public class VerifyCodeHandler : IHttpHandler, IRequiresSessionState
     {
         public bool IsReusable
         {

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountRepository.cs" />
     <Compile Include="SysExceptionRepository.cs" />
     <Compile Include="SysLogRepository.cs" />
     <Compile Include="HomeRepository.cs" />
