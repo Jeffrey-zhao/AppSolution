@@ -45,7 +45,6 @@ namespace App.Admin.Controllers
                     }
                 ).ToArray();
             return Json(jsonData, JsonRequestBehavior.AllowGet);
-
         }
 
     }

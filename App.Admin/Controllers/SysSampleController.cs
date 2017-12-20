@@ -25,9 +25,9 @@ namespace App.Admin.Controllers
         }
         //index post
         [HttpPost]
-        public JsonResult GetList(GridPager pager,string queryStr="")
+        public JsonResult GetList(GridPager pager, string queryStr = "")
         {
-            IEnumerable<SysSampleModel> list = m_BLL.GetList(ref pager,queryStr);
+            IEnumerable<SysSampleModel> list = m_BLL.GetList(ref pager, queryStr);
             var json = new
             {
                 total = pager.TotalRows,
@@ -57,16 +57,16 @@ namespace App.Admin.Controllers
         public JsonResult Create(SysSampleModel model)
         {
             ValidationErrors errors = new ValidationErrors();
-            if (m_BLL.Create(ref errors,model))
+            if (m_BLL.Create(ref errors, model))
             {
                 LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name, "成功", "创建", "样例程序");
-                return Json(JsonHandler.CreateMessage(1,"插入成功"), JsonRequestBehavior.AllowGet);
+                return Json(JsonHandler.CreateMessage(1, "插入成功"), JsonRequestBehavior.AllowGet);
             }
             else
             {
                 string ErrorCol = errors.Error;
-                LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name+","+ErrorCol, "失败", "创建", "样例程序");
-                return Json(JsonHandler.CreateMessage(0,"插入失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name + "," + ErrorCol, "失败", "创建", "样例程序");
+                return Json(JsonHandler.CreateMessage(0, "插入失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -81,34 +81,44 @@ namespace App.Admin.Controllers
         [HttpPost]
         public JsonResult Edit(SysSampleModel model)
         {
-            if (m_BLL.Edit(model))
+            ValidationErrors errors = new ValidationErrors();
+            if (m_BLL.Edit(ref errors,model))
             {
-                return Json(1, JsonRequestBehavior.AllowGet);
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name, "成功", "编辑", "样例程序");
+                return Json(JsonHandler.CreateMessage(1, "编辑成功"), JsonRequestBehavior.AllowGet);
             }
             else
             {
-                return Json(0, JsonRequestBehavior.AllowGet);
+                string ErrorCol = errors.Error;
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + model.Id + ",Name:" + model.Name + "," + ErrorCol, "失败", "编辑", "样例程序");
+                return Json(JsonHandler.CreateMessage(0, "编辑失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
             }
         }
 
         //delete 
         public JsonResult Delete(string id)
         {
+            ValidationErrors errors = new ValidationErrors();
             if (!string.IsNullOrWhiteSpace(id))
             {
-                if (m_BLL.Delete(id))
+                if (m_BLL.Delete(ref errors,id))
                 {
-                    return Json(1, JsonRequestBehavior.AllowGet);
+                    LogHandler.WriteServiceLog("虚拟用户", "Id:" + id + ",", "成功", "删除", "样例程序");
+                    return Json(JsonHandler.CreateMessage(1, "删除成功"), JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
 
-                    return Json(0, JsonRequestBehavior.AllowGet);
+                    string ErrorCol = errors.Error;
+                    LogHandler.WriteServiceLog("虚拟用户", "Id:" + id + "," + ErrorCol, "失败", "删除", "样例程序");
+                    return Json(JsonHandler.CreateMessage(0, "删除失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
                 }
             }
             else
             {
-                return Json(0, JsonRequestBehavior.AllowGet);
+                string ErrorCol = errors.Error;
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + id + "," + ErrorCol, "失败", "删除", "样例程序");
+                return Json(JsonHandler.CreateMessage(0, "删除失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
             }
         }
 

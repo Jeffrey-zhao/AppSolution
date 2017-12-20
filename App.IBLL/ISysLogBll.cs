@@ -12,6 +12,6 @@ namespace App.DAL
     {
         List<SysLog> GetList(ref GridPager pager, string queryStr);
         SysLog GetById(string id);
-        bool Delete(string id);
+        bool Delete(ref ValidationErrors errors,string id);
     }
 }

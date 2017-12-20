@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace App.BLL.Core
 {
-    public class Exceptionhandler
+    public static class ExceptionHandler
     {
         /// <summary>
         /// 加入异常日志

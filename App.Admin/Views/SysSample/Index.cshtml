@@ -152,9 +152,9 @@
                 $.messager.confirm('提示', '确定删除', function (r) {
                         if (r) {
                             $.post("/SysSample/Delete?id=" + row.Id, function (data) {
-                                if (data.type == 1)
+                                if (data.Type == 1)
                                     $("#List").datagrid('load');
-                                $.messageBox5s('提示', data.message);
+                                $.messageBox5s('提示', data.Message);
                             }, "json");
 
                         }

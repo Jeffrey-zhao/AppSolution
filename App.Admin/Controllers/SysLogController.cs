@@ -1,4 +1,5 @@
-﻿using App.Common;
+﻿using App.Admin.Core;
+using App.Common;
 using App.DAL;
 using App.Models;
 using App.Models.Sys;
@@ -71,21 +72,27 @@ namespace App.Admin.Controllers
         [HttpPost]
         public JsonResult Delete(string id)
         {
+            ValidationErrors errors = new ValidationErrors();
             if (id!=null)
             {
-                if (logBLL.Delete(id))
+                if (logBLL.Delete(ref errors,id))
                 {
-                    return Json(1, JsonRequestBehavior.AllowGet);
+                    LogHandler.WriteServiceLog("虚拟用户", "Id:" + id + ",", "成功", "删除", "日志程序");
+                    return Json(JsonHandler.CreateMessage(1, "删除成功"), JsonRequestBehavior.AllowGet);
                 }
                 else
                 {
 
-                    return Json(0, JsonRequestBehavior.AllowGet);
+                    string ErrorCol = errors.Error;
+                    LogHandler.WriteServiceLog("虚拟用户", "Id:" + id + "," + ErrorCol, "失败", "删除", "日志程序");
+                    return Json(JsonHandler.CreateMessage(0, "删除失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
                 }
             }
             else
             {
-                return Json(0, JsonRequestBehavior.AllowGet);
+                string ErrorCol = errors.Error;
+                LogHandler.WriteServiceLog("虚拟用户", "Id:" + id + "," + ErrorCol, "失败", "删除", "日志程序");
+                return Json(JsonHandler.CreateMessage(0, "删除失败" + "\n" + ErrorCol), JsonRequestBehavior.AllowGet);
             }
         }
         #endregion

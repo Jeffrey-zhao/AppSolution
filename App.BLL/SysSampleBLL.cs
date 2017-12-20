@@ -144,8 +144,8 @@ namespace App.BLL
             }
             catch (Exception ex)
             {
-                errors.Add("插入失败");
-                Exceptionhandler.WriteException(ex);
+                errors.Add("插入异常");
+                ExceptionHandler.WriteException(ex);
                 return false;
             }
         }
@@ -155,7 +155,7 @@ namespace App.BLL
         /// <param name="errors">持久的错误信息</param>
         /// <param name="id">id</param>
         /// <returns>是否成功</returns>
-        public bool Delete(string id)
+        public bool Delete(ref ValidationErrors errors ,string id)
         {
             try
             {
@@ -165,12 +165,14 @@ namespace App.BLL
                 }
                 else
                 {
+                    errors.Add("删除失败");
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                //ExceptionHander.WriteException(ex);
+                errors.Add("删除异常");
+                ExceptionHandler.WriteException(ex);
                 return false;
             }
         }
@@ -181,13 +183,14 @@ namespace App.BLL
         /// <param name="errors">持久的错误信息</param>
         /// <param name="model">模型</param>
         /// <returns>是否成功</returns>
-        public bool Edit(SysSampleModel model)
+        public bool Edit(ref ValidationErrors errors,SysSampleModel model)
         {
             try
             {
                 SysSample entity = Rep.GetById(model.Id);
                 if (entity == null)
                 {
+                    errors.Add("主键不存在");
                     return false;
                 }
                 entity.Name = model.Name;
@@ -202,15 +205,15 @@ namespace App.BLL
                 }
                 else
                 {
-
+                    errors.Add("编辑失败");
                     return false;
                 }
 
             }
             catch (Exception ex)
             {
-
-                //ExceptionHander.WriteException(ex);
+                errors.Add("编辑异常");
+                ExceptionHandler.WriteException(ex);
                 return false;
             }
         }

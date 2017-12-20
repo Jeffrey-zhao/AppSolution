@@ -588,6 +588,7 @@
     <Content Include="Views\SysLog\Index.cshtml" />
     <Content Include="Views\SysException\Index.cshtml" />
     <Content Include="Views\SysException\Details.cshtml" />
+    <Content Include="Views\SysException\Error.cshtml" />
     <None Include="Views\SysSample\Index.cshtml" />
     <Content Include="Views\Shared\_Index_Layout.cshtml" />
   </ItemGroup>

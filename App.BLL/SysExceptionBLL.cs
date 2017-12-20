@@ -9,6 +9,7 @@ using App.Models;
 using Microsoft.Practices.Unity;
 using App.IDAL;
 using App.IBLL;
+using App.BLL.Core;
 
 namespace App.BLL
 {
@@ -50,7 +51,7 @@ namespace App.BLL
             return ExceptionRepository.GetById(id);
         }
 
-        public bool Delete(string id)
+        public bool Delete(ref ValidationErrors errors,string id)
         {
             try
             {
@@ -62,18 +63,21 @@ namespace App.BLL
                         return true;
                     }else
                     {
+                        errors.Add("删除失败");
                         return false;
                     }
                 }
                 else
                 {
+                    errors.Add("主键为空");
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                errors.Add("删除异常");
+                ExceptionHandler.WriteException(ex);
+                return false;
             }
         }
     }
