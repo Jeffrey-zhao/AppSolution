@@ -15,9 +15,8 @@ using App.BLL.Core;
 
 namespace App.BLL
 {
-    public class SysSampleBLL : ISysSampleBLL
+    public class SysSampleBLL : BaseBLL, ISysSampleBLL
     {
-        AppDBContainer db = new AppDBContainer();
         [Dependency]
         public ISysSampleRepository Rep { get; set; }
 
@@ -29,7 +28,7 @@ namespace App.BLL
         /// <returns>列表</returns>
         public List<SysSampleModel> GetList(ref GridPager pager,string queryStr)
         {
-            IQueryable<SysSample> queryData=Rep.GetList(db);
+            IQueryable<SysSample> queryData=Rep.GetList(DB);
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 queryData = queryData.Where(x => x.Name.Contains(queryStr) || x.Note.Contains(queryStr));
@@ -224,7 +223,7 @@ namespace App.BLL
         /// <returns>是否存在</returns>
         public bool IsExists(string id)
         {
-            if (db.SysSamples.SingleOrDefault(a => a.Id == id) != null)
+            if (DB.SysSamples.SingleOrDefault(a => a.Id == id) != null)
             {
                 return true;
             }

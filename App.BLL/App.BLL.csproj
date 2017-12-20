@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseBLL.cs" />
     <Compile Include="Core\ExceptionHandler.cs" />
     <Compile Include="SysExceptionBLL.cs" />
     <Compile Include="SysLogBLL.cs" />

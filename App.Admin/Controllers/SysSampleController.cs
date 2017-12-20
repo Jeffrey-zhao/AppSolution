@@ -13,7 +13,7 @@ using App.Admin.Core;
 
 namespace App.Admin.Controllers
 {
-    public class SysSampleController : Controller
+    public class SysSampleController : BaseController
     {
         // GET: SysSample
         [Dependency]

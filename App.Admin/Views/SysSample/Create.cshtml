@@ -1,10 +1,10 @@
 ﻿@model App.Models.Sys.SysSampleModel
 @using App.Common;
 @using App.Models.Sys;
-@using App.Admin;
+@using App.Admin.Core;
 
 @{
-    ViewBag.Title = "创建";
+    ViewBag.Title = Suggestion.Create;
     Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
 }
 
@@ -35,7 +35,8 @@
 </script>
 
 <div class="mvctool bgb">
-    <a id="btnSave" style="float: left;" class="l-btn l-btn-plain"><span class="l-btn-left"><span class="l-btn-text icon-save" style="padding-left: 20px;">保存</span></span></a>
+    @Html.ToolButton("btnSave", "icon-save", Suggestion.Save, false)
+    @*<a id="btnSave" style="float: left;" class="l-btn l-btn-plain"><span class="l-btn-left"><span class="l-btn-text icon-save" style="padding-left: 20px;">@Suggestion.Save</span></span></a>*@
 </div>
 @using (Html.BeginForm("Create", "SysSample", null, FormMethod.Post, new { Id = "CreateForm" }))
 {

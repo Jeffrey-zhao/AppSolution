@@ -1,10 +1,10 @@
 ﻿@model App.Models.Sys.SysSampleModel
 @using App.Common;
 @using App.Models.Sys;
-@using App.Admin;
+@using App.Admin.Core;
 
 @{
-    ViewBag.Title = "编辑";
+    ViewBag.Title = Suggestion.Edit;
     Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
 }
 
@@ -19,12 +19,12 @@
                 dataType: "json",
                 success: function (data) {
                     if (data == 1) {
-                        window.parent.frameReturnByMes("成功");
+                        window.parent.frameReturnByMes("@Suggestion.UpdateSucceed");
                         window.parent.frameReturnByReload(true);
                         window.parent.frameReturnByClose();
                     }
                     else {
-                        window.parent.frameReturnByMes("失败");
+                        window.parent.frameReturnByMes("@Suggestion.UpdateFail");
                     }
                 }
             });
@@ -33,7 +33,8 @@
 </script>
 
 <div class="mvctool bgb">
-    <a id="btnSave" style="float: left;" class="l-btn l-btn-plain"><span class="l-btn-left"><span class="l-btn-text icon-save" style="padding-left: 20px;">保存</span></span></a>
+    @Html.ToolButton("btnSave", "icon-save", Suggestion.Return, false)
+    @*<a id="btnSave" style="float: left;" class="l-btn l-btn-plain"><span class="l-btn-left"><span class="l-btn-text icon-save" style="padding-left: 20px;">@Suggestion.Save</span></span></a>*@
 </div>
 @using (Html.BeginForm("Edit", "SysSample", null, FormMethod.Post, new { Id = "EditForm" }))
 {

@@ -13,7 +13,7 @@ using App.BLL.Core;
 
 namespace App.BLL
 {
-    public class SysExceptionBLL : ISysExceptionBLL
+    public class SysExceptionBLL :BaseBLL, ISysExceptionBLL
     {
         [Dependency]
         public ISysExceptionRepository ExceptionRepository { get; set; }
@@ -21,9 +21,8 @@ namespace App.BLL
 
         public List<SysException> GetList(ref GridPager pager, string queryStr)
         {
-            AppDBContainer db = new AppDBContainer();
             List<SysException> query = null;
-            IQueryable<SysException> list = ExceptionRepository.GetList(db);
+            IQueryable<SysException> list = ExceptionRepository.GetList(DB);
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 list = list.Where(a => a.Message.Contains(queryStr));
@@ -57,8 +56,7 @@ namespace App.BLL
             {
                 if (!string.IsNullOrWhiteSpace(id))
                 {
-                    AppDBContainer db = new AppDBContainer();
-                    if (ExceptionRepository.Delete(db, id) == 1)
+                    if (ExceptionRepository.Delete(DB, id) == 1)
                     {
                         return true;
                     }else

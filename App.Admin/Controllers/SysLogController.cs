@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace App.Admin.Controllers
 {
-    public class SysLogController : Controller
+    public class SysLogController : BaseController
     {
         [Dependency]
         public ISysLogBLL logBLL { get; set; }

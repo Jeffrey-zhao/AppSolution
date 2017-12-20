@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace App.Admin.Controllers
 {
-    public class SysExceptionController : Controller
+    public class SysExceptionController : BaseController
     {
         [Dependency]
         public ISysExceptionBLL exceptionBLL { get; set; }

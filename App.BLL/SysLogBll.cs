@@ -13,7 +13,7 @@ using App.BLL.Core;
 
 namespace App.BLL
 {
-    public class SysLogBLL : ISysLogBLL
+    public class SysLogBLL :BaseBLL, ISysLogBLL
     {
         [Dependency]
         public ISysLogRepository logRepository { get; set; }
@@ -21,9 +21,8 @@ namespace App.BLL
 
         public List<SysLog> GetList(ref GridPager pager, string queryStr)
         {
-            AppDBContainer db = new AppDBContainer();
             List<SysLog> query = null;
-            IQueryable<SysLog> list = logRepository.GetList(db);
+            IQueryable<SysLog> list = logRepository.GetList(DB);
             if (!string.IsNullOrWhiteSpace(queryStr))
             {
                 list = list.Where(a => a.Message.Contains(queryStr) || a.Module.Contains(queryStr));
@@ -57,8 +56,7 @@ namespace App.BLL
             {
                 if (!string.IsNullOrWhiteSpace(id))
                 {
-                    AppDBContainer db = new AppDBContainer();
-                    if (logRepository.Delete(db, id) == 1)
+                    if (logRepository.Delete(DB, id) == 1)
                     {
                         return true;
                     }else

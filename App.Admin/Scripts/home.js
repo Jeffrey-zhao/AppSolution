@@ -45,7 +45,7 @@ $(function () {
     $('#tab_menu-tabcloseright').click(function () {
         var nextall = $('.tabs-selected').nextAll();
         if (nextall.length == 0) {
-            $.messager.alert('提示', '前面没有了!', 'warning');
+            $.messager.alert('', '前面没有了!', 'warning');
             return false;
         }
         nextall.each(function (i, n) {
@@ -61,7 +61,7 @@ $(function () {
 
         var prevall = $('.tabs-selected').prevAll();
         if (prevall.length == 0) {
-            $.messager.alert('提示', '后面没有了!', 'warning');
+            $.messager.alert('', '后面没有了!', 'warning');
             return false;
         }
         prevall.each(function (i, n) {
@@ -123,7 +123,7 @@ function createFrame(url) {
 $(function () {
     $(".ui-skin-nav .li-skinitem span").click(function () {
         var theme = $(this).attr("rel");
-        $.messager.confirm('提示', '切换皮肤将重新加载系统！', function (r) {
+        $.messager.confirm('', '切换皮肤将重新加载系统！', function (r) {
             if (r) {
                 $.post("../../Home/SetThemes", { value: theme }, function (data) { window.location.reload(); }, "json");
             }
