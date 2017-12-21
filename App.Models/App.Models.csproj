@@ -65,7 +65,10 @@
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SysRoleSysUserConfigurationMapping.cs" />
+    <Content Include="Sqls\storeProcedureWithGetUserRight.sql" />
+    <Compile Include="P_Sys_GetRightOperate_Result.cs">
+      <DependentUpon>AppDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="SysException.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
@@ -87,6 +90,7 @@
     <Compile Include="SysRole.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="SysRoleSysUserConfigurationMapping.cs" />
     <Compile Include="SysSample.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
@@ -95,6 +99,7 @@
     </Compile>
     <Compile Include="Sys\AccountModel.cs" />
     <Compile Include="Sys\BaseException.cs" />
+    <Compile Include="Sys\PermModel.cs" />
     <Compile Include="Sys\SysExceptionModel.cs" />
     <Compile Include="Sys\SysLogModel.cs" />
     <Compile Include="Sys\SysSampleModel.cs" />

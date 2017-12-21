@@ -23,6 +23,7 @@ namespace App.Admin.Controllers
         {
             return View();
         }
+        [SupportFilter(ActionName ="Index")]
         //index post
         [HttpPost]
         public JsonResult GetList(GridPager pager, string queryStr = "")
@@ -45,7 +46,7 @@ namespace App.Admin.Controllers
             };
             return Json(json, JsonRequestBehavior.AllowGet);
         }
-
+        [SupportFilter]
         //create get
         public ActionResult Create()
         {

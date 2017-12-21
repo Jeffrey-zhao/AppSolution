@@ -75,6 +75,7 @@
     <Compile Include="HomeBLL.cs" />
     <Compile Include="SysSampleBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SysUserBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App.Common\App.Common.csproj">

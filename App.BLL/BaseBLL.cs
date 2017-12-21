@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace App.BLL
 {
-    public class BaseBLL
+    public class BaseBLL:IDisposable
     {
         public AppDBContainer DB
         {
@@ -15,6 +15,11 @@ namespace App.BLL
             {
                 return new AppDBContainer();
             }
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

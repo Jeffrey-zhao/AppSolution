@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AppDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AppDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="SysException">
           <Key>
             <PropertyRef Name="Id" />
@@ -241,6 +241,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="P_Sys_GetRightOperate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="varchar" Mode="In" />
+          <Parameter Name="url" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="AppDBStoreContainer">
           <EntitySet Name="SysException" EntityType="Self.SysException" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysLog" EntityType="Self.SysLog" Schema="dbo" store:Type="Tables" />
@@ -281,8 +285,7 @@
             <End Role="SysRoleSysUser" EntitySet="SysRoleSysUser" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AppDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -320,6 +323,10 @@
             <End Role="SysRole" EntitySet="SysRole" />
             <End Role="SysUser" EntitySet="SysUser" />
           </AssociationSet>
+          <FunctionImport Name="P_Sys_GetRightOperate" ReturnType="Collection(AppDB.P_Sys_GetRightOperate_Result)">
+            <Parameter Name="userId" Mode="In" Type="String" />
+            <Parameter Name="url" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="SysException">
           <Key>
@@ -535,7 +542,11 @@
           <End Type="AppDB.SysRole" Role="SysRole" Multiplicity="*" />
           <End Type="AppDB.SysUser" Role="SysUser" Multiplicity="*" />
         </Association>
-      </Schema>
+        <ComplexType Name="P_Sys_GetRightOperate_Result">
+          <Property Type="String" Name="KeyCode" Nullable="false" MaxLength="200" />
+          <Property Type="Boolean" Name="IsValid" Nullable="false" />
+        </ComplexType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -645,6 +656,45 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SysUser">
+            <EntityTypeMapping TypeName="AppDB.SysUser">
+              <MappingFragment StoreEntitySet="SysUser">
+                <ScalarProperty Name="Attach" ColumnName="Attach" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="JobState" ColumnName="JobState" />
+                <ScalarProperty Name="Expertise" ColumnName="Expertise" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Professional" ColumnName="Professional" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="Native" ColumnName="Native" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Political" ColumnName="Political" />
+                <ScalarProperty Name="Marital" ColumnName="Marital" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="CreatePerson" ColumnName="CreatePerson" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Village" ColumnName="Village" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Card" ColumnName="Card" />
+                <ScalarProperty Name="TrueName" ColumnName="TrueName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="SysRoleSysUser" TypeName="AppDB.SysRoleSysUser" StoreEntitySet="SysRoleSysUser">
             <EndProperty Name="SysUser">
               <ScalarProperty Name="Id" ColumnName="SysUserId" />
@@ -653,47 +703,14 @@
               <ScalarProperty Name="Id" ColumnName="SysRoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="SysUser">
-            <EntityTypeMapping TypeName="AppDB.SysUser">
-              <MappingFragment StoreEntitySet="SysUser">
-                <ScalarProperty Name="TrueName" ColumnName="TrueName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="TrueName" ColumnName="TrueName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Password"  ColumnName="Password"/>
-                <ScalarProperty Name="Card" ColumnName="Card"/>
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber"/>
-                <ScalarProperty Name="QQ" ColumnName="QQ"/>
-                <ScalarProperty Name="EmailAddress"  ColumnName="EmailAddress"/>
-                <ScalarProperty Name="OtherContact" ColumnName="OtherContact" />
-                <ScalarProperty Name="Province"  ColumnName="Province"/>
-                <ScalarProperty Name="City"  ColumnName="City"/>
-                <ScalarProperty Name="Village" ColumnName="Village"/>
-                <ScalarProperty Name="Address"  ColumnName="Address"/>
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="CreateTime"  ColumnName="CreateTime"/>
-                <ScalarProperty Name="CreatePerson"  ColumnName="CreatePerson"/>
-                <ScalarProperty Name="Sex"  ColumnName="Sex"/>
-                <ScalarProperty Name="Birthday"  ColumnName="Birthday"/>
-                <ScalarProperty Name="JoinDate"  ColumnName="JoinDate"/>
-                <ScalarProperty Name="Marital" ColumnName="Marital"/>
-                <ScalarProperty Name="Political"  ColumnName="Political"/>
-                <ScalarProperty Name="Nationality"  ColumnName="Nationality"/>
-                <ScalarProperty Name="Native" ColumnName="Native"/>
-                <ScalarProperty Name="School"  ColumnName="School"/>
-                <ScalarProperty Name="Professional" ColumnName="Professional"/>
-                <ScalarProperty Name="Degree" ColumnName="Degree"/>
-                <ScalarProperty Name="DepId"  ColumnName="DepId"/>
-                <ScalarProperty Name="PosId"  ColumnName="PosId"/>
-                <ScalarProperty Name="Expertise" ColumnName="Expertise" />
-                <ScalarProperty Name="JobState" ColumnName="JobState"/>
-                <ScalarProperty Name="Photo" ColumnName="Photo"/>
-                <ScalarProperty Name="Attach"  ColumnName="Attach"/>
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_Sys_GetRightOperate" FunctionName="AppDB.Store.P_Sys_GetRightOperate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AppDB.P_Sys_GetRightOperate_Result">
+                <ScalarProperty Name="KeyCode" ColumnName="KeyCode" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

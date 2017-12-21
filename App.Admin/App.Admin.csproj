@@ -154,6 +154,7 @@
     <Compile Include="Core\ExtendMvcHtml.cs" />
     <Compile Include="Core\LogHandler.cs" />
     <None Include="Core\VerifyCodeHandler.ashx" />
+    <Compile Include="Core\SupportFilterAttribute.cs" />
     <Compile Include="Core\VerifyCodeHandler.ashx.cs">
       <DependentUpon>VerifyCodeHandler.ashx</DependentUpon>
     </Compile>

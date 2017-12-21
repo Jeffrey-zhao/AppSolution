@@ -12,8 +12,10 @@ namespace App.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.ModelConfiguration.Conventions;
-
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
+    
     public partial class AppDBContainer : DbContext
     {
         public AppDBContainer()
@@ -23,12 +25,7 @@ namespace App.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //throw new UnintentionalCodeFirstException();
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-            modelBuilder.Configurations.Add(new SysRoleSysUserConfigurationMapping());
-
+            throw new UnintentionalCodeFirstException();
         }
     
         public DbSet<SysException> SysException { get; set; }
@@ -40,5 +37,18 @@ namespace App.Models
         public DbSet<SysRole> SysRole { get; set; }
         public DbSet<SysSample> SysSample { get; set; }
         public DbSet<SysUser> SysUser { get; set; }
+    
+        public virtual ObjectResult<P_Sys_GetRightOperate_Result> P_Sys_GetRightOperate(string userId, string url)
+        {
+            var userIdParameter = userId != null ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(string));
+    
+            var urlParameter = url != null ?
+                new ObjectParameter("url", url) :
+                new ObjectParameter("url", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<P_Sys_GetRightOperate_Result>("P_Sys_GetRightOperate", userIdParameter, urlParameter);
+        }
     }
 }
