@@ -1,4 +1,5 @@
 ﻿using App.DAL;
+using App.IBLL;
 using App.Models;
 using App.Models.Sys;
 using Microsoft.Practices.Unity;
@@ -28,8 +29,10 @@ namespace App.Admin.Controllers
         /// <returns>树</returns>
         public JsonResult GetTree(string id)
         {
-            if (Session["Account"] != null)
+            //if (Session["Account"] != null)
+            if(true)//防止每次都要登陆
             {
+                Session["Account"] = new AccountModel() { Id="admin",TrueName="系统管理员"};
                 AccountModel account = (AccountModel)Session["Account"];
                 List<SysModule> menus = homeBLL.GetMenuByPersonId(account.Id,id);
                 var jsonData = (

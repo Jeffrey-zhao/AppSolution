@@ -23,12 +23,14 @@ namespace App.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            //throw new UnintentionalCodeFirstException();
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            // 多对多映射对应表
-            modelBuilder.Configurations.Add(new SysRoleSysUserConfigurationMapping());
-        }
 
+            modelBuilder.Configurations.Add(new SysRoleSysUserConfigurationMapping());
+
+        }
+    
         public DbSet<SysException> SysException { get; set; }
         public DbSet<SysLog> SysLog { get; set; }
         public DbSet<SysModule> SysModule { get; set; }

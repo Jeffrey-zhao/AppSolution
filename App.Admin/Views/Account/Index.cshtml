@@ -73,7 +73,7 @@
             return;
         }
         $("#Loading").show();
-
+        
         $.post('/Account/Login', { userName: $("#UserName").val(), password: $("#Password").val(), code: $("#ValidateCode").val() },
             function (data) {
                 if (data.Type == "1") {
