@@ -166,6 +166,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AppDB_log.ldf">
+      <DependentUpon>AppDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\AppDB.mdf" />
     <Content Include="Content\Images\account.jpg" />
     <Content Include="Content\Images\arrow.gif" />
     <Content Include="Content\Images\Article\icon_arrow_blue.gif" />
@@ -604,7 +608,6 @@
     <Content Include="Views\Shared\_Index_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Library\" />
   </ItemGroup>
