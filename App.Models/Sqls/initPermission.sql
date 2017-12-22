@@ -9,12 +9,26 @@ INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [S
 INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('BaseSampleQuery', N'查询', 'Query', 'BaseSample', 0, 0)
 INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('BaseSampleSave', N'保存', 'Save', 'BaseSample', 0, 0)
 
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageCreate', N'创建', 'Create', 'RightManage', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageDelete', N'删除', 'Delete', 'RightManage', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageDetails', N'详细', 'Details', 'RightManage', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageEdit', N'编辑', 'Edit', 'RightManage', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageExport', N'导出', 'Export', 'RightManage', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageQuery', N'查询', 'Query', 'RightManage', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RightManageSave', N'保存', 'Save', 'RightManage', 0, 0)
+
 --insert SysRole
 INSERT INTO[SysRole]([Id], [Name], [Description], [CreateTime], [CreatePerson]) values('administrator', N'超级管理员', N'全部授权', '10/1/2012 12:00AM', 'Administrator')
 
 --insert SysRight
 INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorSampleFile', 'SampleFile', 'administrator', 1)
 INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorBaseSample', 'BaseSample', 'administrator', 1)
+
+INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorRightManage', 'RightManage', 'administrator', 1)
+INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorUserManage', 'UserManage', 'administrator', 1)
+INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorRoleAuthorize', 'RoleAuthorize', 'administrator', 1)
+INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorRoleManage', 'RoleManage', 'administrator', 1)
+INSERT INTO[SysRight]([Id], [ModuleId], [RoleId], [Rightflag]) values('administratorModuleSetting', 'ModuleSetting', 'administrator', 1)
 
 --insert SysRightOperate
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorBaseSampleCreate', 'administratorBaseSample', 'Create', 1)
@@ -24,6 +38,14 @@ INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('admi
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorBaseSampleExport', 'administratorBaseSample', 'Export', 1)
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorBaseSampleQuery', 'administratorBaseSample', 'Query', 1)
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorBaseSampleSave', 'administratorBaseSample', 'Save', 1)
+
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageCreate', 'administratorRightManage', 'Create', 1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageDelete', 'administratorRightManage', 'Delete', 1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageDetails', 'administratorRightManage', 'Details', 1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageEdit', 'administratorRightManage', 'Edit', 1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageExport', 'administratorRightManage', 'Export', 1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageQuery', 'administratorRightManage', 'Query', 1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageSave', 'administratorRightManage', 'Save', 1)
 
 --insert SysUser
 INSERT INTO[SysUser]([Id], [UserName], [Password], [TrueName], [Card], [MobileNumber], [PhoneNumber], [QQ], [EmailAddress], [OtherContact], [Province],

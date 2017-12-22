@@ -16,6 +16,7 @@ namespace App.Models
     {
         public SysModule()
         {
+            this.SysModule1 = new HashSet<SysModule>();
             this.SysModuleOperate = new HashSet<SysModuleOperate>();
             this.SysRight = new HashSet<SysRight>();
         }
@@ -28,12 +29,14 @@ namespace App.Models
         public string Iconic { get; set; }
         public Nullable<int> Sort { get; set; }
         public string Remark { get; set; }
-        public Nullable<bool> State { get; set; }
+        public bool Enable { get; set; }
         public string CreatePerson { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public bool IsLast { get; set; }
         public byte[] Version { get; set; }
     
+        public virtual ICollection<SysModule> SysModule1 { get; set; }
+        public virtual SysModule SysModule2 { get; set; }
         public virtual ICollection<SysModuleOperate> SysModuleOperate { get; set; }
         public virtual ICollection<SysRight> SysRight { get; set; }
     }

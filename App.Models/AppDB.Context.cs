@@ -50,5 +50,15 @@ namespace App.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<P_Sys_GetRightOperate_Result>("P_Sys_GetRightOperate", userIdParameter, urlParameter);
         }
+    
+        public virtual int P_Sys_ClearUnusedRightOperate()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("P_Sys_ClearUnusedRightOperate");
+        }
+    
+        public virtual int P_Sys_InsertSysRight()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("P_Sys_InsertSysRight");
+        }
     }
 }

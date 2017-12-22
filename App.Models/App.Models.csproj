@@ -65,6 +65,7 @@
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Sqls\clearUsedRightOperate.sql" />
     <Content Include="Sqls\storeProcedureWithGetUserRight.sql" />
     <Compile Include="P_Sys_GetRightOperate_Result.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
@@ -102,6 +103,8 @@
     <Compile Include="Sys\PermModel.cs" />
     <Compile Include="Sys\SysExceptionModel.cs" />
     <Compile Include="Sys\SysLogModel.cs" />
+    <Compile Include="Sys\SysModuleModel.cs" />
+    <Compile Include="Sys\SysModuleOperateModel.cs" />
     <Compile Include="Sys\SysSampleModel.cs" />
   </ItemGroup>
   <ItemGroup>

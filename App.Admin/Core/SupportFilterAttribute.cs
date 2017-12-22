@@ -1,6 +1,8 @@
 ﻿using App.BLL;
 using App.DAL;
+using App.IBLL;
 using App.Models.Sys;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace App.Admin.Core
 {
     public class SupportFilterAttribute:ActionFilterAttribute
     {
+        //[Dependency]
+        //public ISysUserBLL userBLL { get; set; }
         public string ActionName { get; set; }
         private string Area;
         public override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -97,11 +101,13 @@ namespace App.Admin.Core
                 perm = (List<PermModel>)HttpContext.Current.Session[filePath];
                 if (perm == null)
                 {
-                    using (SysUserBLL userBLL = new SysUserBLL() { repo=new SysRightRepository()})
+                    using (SysUserBLL userBLL = new SysUserBLL() { repo = new SysRightRepository() })
                     {
                         perm = userBLL.GetPermission(account.Id, controller);//获取当前用户的权限列表
                         HttpContext.Current.Session[filePath] = perm;//获取的劝降放入会话由Controller调用
                     }
+                    //perm = userBLL.GetPermission(account.Id, controller);//获取当前用户的权限列表
+                    //HttpContext.Current.Session[filePath] = perm;//获取的劝降放入会话由Controller调用
                 }
                 //当用户访问index时，只要权限>0就可以访问
                 if (actionName.ToLower() == "index")

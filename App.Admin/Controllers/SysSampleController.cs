@@ -129,5 +129,10 @@ namespace App.Admin.Controllers
             SysSampleModel entity = m_BLL.GetById(id);
             return View(entity);
         }
+        [SupportFilter]
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
