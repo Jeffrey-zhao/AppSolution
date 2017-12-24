@@ -166,7 +166,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\AppDB_log.ldf">
+    <Content Include="App_Data\AppDB.ldf">
       <DependentUpon>AppDB.mdf</DependentUpon>
     </Content>
     <Content Include="App_Data\AppDB.mdf" />
@@ -534,6 +534,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Library\System.Web.Mvc.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\Images\Logo.psd" />
@@ -609,7 +610,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Filters\" />
-    <Folder Include="Library\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

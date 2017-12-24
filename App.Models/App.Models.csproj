@@ -65,8 +65,8 @@
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Sqls\clearUsedRightOperate.sql" />
-    <Content Include="Sqls\storeProcedureWithGetUserRight.sql" />
+    <Content Include="Sqls\7.clearUsedRightOperate.sql" />
+    <Content Include="Sqls\8.storeProcedureWithGetUserRight.sql" />
     <Compile Include="P_Sys_GetRightOperate_Result.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
@@ -129,12 +129,12 @@
       <LastGenOutput>AppDB.cs</LastGenOutput>
       <DependentUpon>AppDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Sqls\InitialSysModule.sql" />
-    <Content Include="Sqls\initPermission.sql" />
-    <Content Include="Sqls\Permission.sql" />
-    <Content Include="Sqls\SysException.sql" />
-    <Content Include="Sqls\SysLog.sql" />
-    <Content Include="Sqls\SysSample.sql" />
+    <Content Include="Sqls\5.InitialSysModule.sql" />
+    <Content Include="Sqls\6.initPermission.sql" />
+    <Content Include="Sqls\4.Permission.sql" />
+    <Content Include="Sqls\3.SysException.sql" />
+    <Content Include="Sqls\2.SysLog.sql" />
+    <Content Include="Sqls\1.SysSample.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
