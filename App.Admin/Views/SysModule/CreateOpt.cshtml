@@ -1,14 +1,14 @@
 ﻿@model App.Models.Sys.SysModuleOperateModel
 @using App.Common;
 @using App.Models.Sys;
-@using App.Admin;
+@using App.Admin.Core;
 @{
     ViewBag.Title = "创建";
     Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
-    List<permModel> perm = (List<permModel>)ViewBag.Perm;
+    List<PermModel> perm = (List<PermModel>)ViewBag.Perm;
     if (perm == null)
     {
-        perm = new List<permModel>();
+        perm = new List<PermModel>();
     }
 }
 
