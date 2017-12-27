@@ -47,6 +47,13 @@ INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('admi
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageQuery', 'administratorRightManage', 'Query', 1)
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRightManageSave', 'administratorRightManage', 'Save', 1)
 
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageAllot',	'administratorRoleManage'	,'Allot',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageCreate',	'administratorRoleManage',	'Create',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageDelete'	,'administratorRoleManage'	,'Delete',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageDetails',	'administratorRoleManage'	,'Details',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageEdit',	'administratorRoleManage',	'Edit',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageQuery',	'administratorRoleManage',	'Query'	,1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleManageSave',	'administratorRoleManage',	'Save'	,1)
 --insert SysUser
 INSERT INTO[SysUser]([Id], [UserName], [Password], [TrueName], [Card], [MobileNumber], [PhoneNumber], [QQ], [EmailAddress], [OtherContact], [Province],
  [City], [Village], [Address], [State], [CreateTime], [CreatePerson], [Sex], [Birthday], [JoinDate], [Marital], [Political], [Nationality], [Native], [School], 

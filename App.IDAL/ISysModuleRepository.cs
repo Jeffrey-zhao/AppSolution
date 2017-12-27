@@ -12,7 +12,7 @@ namespace App.IDAL
         IQueryable<SysModule> GetList(AppDBContainer db);
         IQueryable<SysModule> GetModuleBySystem(AppDBContainer db, string parentId);
         int Create(SysModule entity);
-        void Delete(AppDBContainer db, string id);
+        bool Delete(AppDBContainer db, string id);
         int Edit(SysModule entity);
         SysModule GetById(string id);
         bool IsExist(string id);
