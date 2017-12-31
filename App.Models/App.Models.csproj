@@ -98,6 +98,7 @@
     <Compile Include="SysUser.cs">
       <DependentUpon>AppDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Sys\SysUserModel.cs" />
     <Compile Include="Sys\AccountModel.cs" />
     <Compile Include="Sys\BaseException.cs" />
     <Compile Include="Sys\PermModel.cs" />

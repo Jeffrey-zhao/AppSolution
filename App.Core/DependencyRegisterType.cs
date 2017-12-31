@@ -30,7 +30,7 @@ namespace App.Core
             container.RegisterType<IAccountBLL, AccountBLL>();
             container.RegisterType<IAccountRepository, AccountRepository>();
 
-            container.RegisterType<ISysUserBLL, SysUserBLL>();
+            //container.RegisterType<ISysRightBLL, SysRightBLL>();
             container.RegisterType<ISysRightRepository, SysRightRepository>();
 
             container.RegisterType<ISysModuleBLL, SysModuleBLL>();
@@ -41,6 +41,9 @@ namespace App.Core
 
             container.RegisterType<ISysRoleBLL, SysRoleBLL>();
             container.RegisterType<ISysRoleRepository, SysRoleRepository>();
+
+            container.RegisterType<ISysUserBLL, SysUserBLL>();
+            container.RegisterType<ISysUserRepository, SysUserRepository>();
         }
     }
 }

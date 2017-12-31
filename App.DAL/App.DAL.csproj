@@ -52,6 +52,7 @@
     <Compile Include="HomeRepository.cs" />
     <Compile Include="SysModuleOperateRepository.cs" />
     <Compile Include="SysModuleRepository.cs" />
+    <Compile Include="SysRepository.cs" />
     <Compile Include="SysRightRepository.cs" />
     <Compile Include="SysRoleRepository.cs" />
     <Compile Include="SysSampleRepository.cs" />

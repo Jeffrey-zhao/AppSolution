@@ -155,6 +155,7 @@
     <Compile Include="Controllers\SysRoleController.cs" />
     <Compile Include="Controllers\SysSampleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\SysUserController.cs" />
     <Compile Include="Core\ExtendMvcHtml.cs" />
     <Compile Include="Core\LogHandler.cs" />
     <None Include="Core\VerifyCodeHandler.ashx" />
@@ -167,6 +168,10 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Views\SysUser\Create.cshtml" />
+    <Content Include="Views\SysUser\Index.cshtml" />
+    <Content Include="Views\SysUser\Edit.cshtml" />
+    <Content Include="Views\SysUser\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AppDB.ldf">
