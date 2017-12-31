@@ -180,7 +180,7 @@
                 $.messager.confirm('提示', '@Suggestion.YouWantToDeleteTheSelectedRecords', function (r) {
                     if (r) {
                         $.post("@Url.Action("Delete")?id=" + row.Id, function (data) {
-                            if (data.type == 1)
+                            if (data.Type == 1)
                                 $("#List").treegrid('reload');
                             $.messageBox5s('提示', data.message);
                         }, "json");
@@ -209,7 +209,7 @@
                 $.messager.confirm('提示', '您确定要删除“' + row.Name+ '”这个操作码？', function (r) {
                     if (r) {
                         $.post("@Url.Action("DeleteOpt")?id=" + row.Id, function (data) {
-                            if (data.type == 1)
+                            if (data.Type == 1)
                             {
                                 $("#OptList").datagrid('load');
                             }
@@ -218,6 +218,9 @@
                     }
                 });
             } else { $.messageBox5s('提示', '请选择一个要赋予操作码的模块!'); }
-         });
+        });
+        function GetGuid() {
+            return $.guid++;
+        }
     });
 </script>

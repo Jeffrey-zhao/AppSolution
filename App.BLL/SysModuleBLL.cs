@@ -109,8 +109,7 @@ namespace App.BLL
                     errors.Add("有下属关联，请先删除下属！");
                     return false;
                 }
-                m_Rep.Delete(DB, id);
-                if (DB.SaveChanges() > 0)
+                if (m_Rep.Delete(DB, id))
                 {
                     //清理无用的项
                     DB.P_Sys_ClearUnusedRightOperate();

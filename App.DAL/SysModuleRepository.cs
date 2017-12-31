@@ -30,7 +30,7 @@ namespace App.DAL
             }
         }
 
-        public void Delete(AppDBContainer db, string id)
+        public bool Delete(AppDBContainer db, string id)
         {
             SysModule entity = db.SysModule.SingleOrDefault(a => a.Id == id);
             if (entity != null)
@@ -55,8 +55,9 @@ namespace App.DAL
                     db.SysModuleOperate.Remove(o3);
                 }
                 db.SysModule.Remove(entity);
-                db.SaveChanges();
+                return db.SaveChanges()>0;
             }
+            return false;
         }
 
         public int Edit(SysModule entity)
