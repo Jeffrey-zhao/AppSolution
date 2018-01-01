@@ -152,6 +152,7 @@
     <Compile Include="Controllers\SysExceptionController.cs" />
     <Compile Include="Controllers\SysLogController.cs" />
     <Compile Include="Controllers\SysModuleController.cs" />
+    <Compile Include="Controllers\SysRightController.cs" />
     <Compile Include="Controllers\SysRoleController.cs" />
     <Compile Include="Controllers\SysSampleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -172,6 +173,7 @@
     <Content Include="Views\SysUser\Index.cshtml" />
     <Content Include="Views\SysUser\Edit.cshtml" />
     <Content Include="Views\SysUser\Details.cshtml" />
+    <Content Include="Views\SysUser\GetRoleByUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AppDB.ldf">
@@ -681,6 +683,8 @@
     <Content Include="Views\SysRole\Details.cshtml" />
     <Content Include="Views\SysRole\Create.cshtml" />
     <Content Include="Views\SysRole\Edit.cshtml" />
+    <Content Include="Views\SysRight\Index.cshtml" />
+    <Content Include="Views\SysRole\GetUserByRole.cshtml" />
     <None Include="Views\SysSample\Index.cshtml" />
     <Content Include="Views\Shared\_Index_Layout.cshtml" />
   </ItemGroup>

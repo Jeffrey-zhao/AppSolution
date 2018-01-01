@@ -102,5 +102,6 @@ namespace App.Models.Sys
         [Display(Name = "附件")]
         public string Attach { get; set; }
 
+        public string Flag { get; set; }//角色分配用户
     }
 }

@@ -30,7 +30,7 @@ namespace App.Core
             container.RegisterType<IAccountBLL, AccountBLL>();
             container.RegisterType<IAccountRepository, AccountRepository>();
 
-            //container.RegisterType<ISysRightBLL, SysRightBLL>();
+            container.RegisterType<ISysRightBLL, SysRightBLL>();
             container.RegisterType<ISysRightRepository, SysRightRepository>();
 
             container.RegisterType<ISysModuleBLL, SysModuleBLL>();

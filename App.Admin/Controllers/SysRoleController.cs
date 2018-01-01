@@ -162,5 +162,57 @@ namespace App.Admin.Controllers
         }
         #endregion
 
+        #region 设置角色用户
+        [SupportFilter(ActionName = "Allot")]
+        public ActionResult GetUserByRole(string roleId)
+        {
+            ViewBag.RoleId = roleId;
+            ViewBag.Perm = GetPermission();
+            return View();
+        }
+
+        [SupportFilter(ActionName = "Allot")]
+        public JsonResult GetUserListByRole(GridPager pager, string roleId)
+        {
+            if (string.IsNullOrWhiteSpace(roleId))
+                return Json(0);
+            var userList = m_BLL.GetUserByRoleId(ref pager, roleId);
+
+            var jsonData = new
+            {
+                total = pager.TotalRows,
+                rows = (
+                    from r in userList
+                    select new SysUserModel()
+                    {
+                        Id = r.Id,
+                        UserName = r.UserName,
+                        TrueName = r.TrueName,
+                        Flag = r.flag == "0" ? "0" : "1",
+                    }
+                ).ToArray()
+            };
+            return Json(jsonData);
+        }
+        #endregion
+
+        [SupportFilter(ActionName = "Save")]
+        public JsonResult UpdateUserRoleByRoleId(string roleId, string userIds)
+        {
+            string[] arr = userIds.Split(',');
+
+            if (m_BLL.UpdateSysRoleSysUser(roleId, arr))
+            {
+                LogHandler.WriteServiceLog(GetUserId(), "Ids:" + arr, "成功", "分配用户", "角色设置");
+                return Json(JsonHandler.CreateMessage(1, Suggestion.SetSucceed), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                string ErrorCol = errors.Error;
+                LogHandler.WriteServiceLog(GetUserId(), "Ids:" + arr, "失败", "分配用户", "角色设置");
+                return Json(JsonHandler.CreateMessage(0, Suggestion.SetFail), JsonRequestBehavior.AllowGet);
+            }
+        }
+
     }
 }

@@ -76,6 +76,7 @@
     <Compile Include="HomeBLL.cs" />
     <Compile Include="SysModuleOperateBLL.cs" />
     <Compile Include="SysModuleBLL.cs" />
+    <Compile Include="SysRightBLL.cs" />
     <Compile Include="SysRoleBLL.cs" />
     <Compile Include="SysSampleBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

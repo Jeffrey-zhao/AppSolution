@@ -25,6 +25,14 @@ INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [S
 INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('UserManageQuery', N'查询', 'Query', 'UserManage', 0, 0)
 INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('UserManageSave', N'保存', 'Save', 'UserManage', 0, 0)
 
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeCreate', N'创建', 'Create', 'RoleAuthorize', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeDelete', N'删除', 'Delete', 'RoleAuthorize', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeDetails', N'详细', 'Details', 'RoleAuthorize', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeEdit', N'编辑', 'Edit', 'RoleAuthorize', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeExport', N'导出', 'Export', 'RoleAuthorize', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeQuery', N'查询', 'Query', 'RoleAuthorize', 0, 0)
+INSERT INTO[SysModuleOperate]([Id], [Name], [KeyCode], [ModuleId], [IsValid], [Sort]) values('RoleAuthorizeSave', N'保存', 'Save', 'RoleAuthorize', 0, 0)
+
 --insert SysRole
 INSERT INTO[SysRole]([Id], [Name], [Description], [CreateTime], [CreatePerson]) values('administrator', N'超级管理员', N'全部授权', '10/1/2012 12:00AM', 'Administrator')
 
@@ -70,6 +78,14 @@ INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('admi
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorUserManageEdit',	'administratorUserManage',	'Edit',	1)
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorUserManageQuery',	'administratorUserManage',	'Query'	,1)
 INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorUserManageSave',	'administratorUserManage',	'Save'	,1)
+
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeAllot',	'administratorRoleAuthorize'	,'Allot',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeCreate',	'administratorRoleAuthorize',	'Create',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeDelete'	,'administratorRoleAuthorize'	,'Delete',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeDetails',	'administratorRoleAuthorize'	,'Details',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeEdit',	'administratorRoleAuthorize',	'Edit',	1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeQuery',	'administratorRoleAuthorize',	'Query'	,1)
+INSERT INTO[SysRightOperate]([Id], [RightId], [KeyCode], [IsValid]) values('administratorRoleAuthorizeSave',	'administratorRoleAuthorize',	'Save'	,1)
 
 --insert SysUser
 INSERT INTO[SysUser]([Id], [UserName], [Password], [TrueName], [Card], [MobileNumber], [PhoneNumber], [QQ], [EmailAddress], [OtherContact], [Province],

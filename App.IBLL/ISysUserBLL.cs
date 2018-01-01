@@ -1,4 +1,5 @@
 ﻿using App.Common;
+using App.Models;
 using App.Models.Sys;
 using System;
 using System.Collections.Generic;
@@ -18,5 +19,7 @@ namespace App.IBLL
         bool Edit(ref ValidationErrors errors, SysUserModel model);
         SysUserModel GetById(string id);
         bool IsExist(string id);
+        bool UpdateSysRoleSysUser(string userId, string[] roleIds);
+        IQueryable<P_Sys_GetRoleByUserId_Result> GetRoleByUserId(ref GridPager pager, string userId);
     }
 }

@@ -79,7 +79,7 @@ namespace App.BLL
                                                 QQ = r.QQ,
                                                 School = r.School,
                                                 Sex = r.Sex,
-                                                State = r.State??false,
+                                                State = r.State ?? false,
                                                 TrueName = r.TrueName,
                                                 UserName = r.UserName,
                                                 Village = r.Village
@@ -306,7 +306,7 @@ namespace App.BLL
                 model.QQ = entity.QQ;
                 model.School = entity.School;
                 model.Sex = entity.Sex;
-                model.State = entity.State??false;
+                model.State = entity.State ?? false;
                 model.TrueName = entity.TrueName;
                 model.UserName = entity.UserName;
                 model.Village = entity.Village;
@@ -316,6 +316,30 @@ namespace App.BLL
             {
                 return null;
             }
+        }
+
+        public IQueryable<P_Sys_GetRoleByUserId_Result> GetRoleByUserId(ref GridPager pager, string userId)
+        {
+            IQueryable<P_Sys_GetRoleByUserId_Result> queryData = m_Rep.GetRoleByUserId(DB, userId);
+            pager.TotalRows = queryData.Count();
+            queryData = m_Rep.GetRoleByUserId(DB, userId);
+            return queryData.Skip((pager.Page - 1) * pager.Rows).Take(pager.Rows);
+        }
+        public bool UpdateSysRoleSysUser(string userId, string[] roleIds)
+        {
+            try
+            {
+                
+                m_Rep.UpdateSysRoleSysUser(userId, roleIds);
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.WriteException(ex);
+                return false;
+            }
+
         }
 
         public bool IsExist(string id)

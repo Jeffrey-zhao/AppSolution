@@ -179,56 +179,108 @@ namespace App.Admin.Controllers
 
         }
         #endregion
+
+        #region 设置用户角色
+        [SupportFilter(ActionName = "Allot")]
+        public ActionResult GetRoleByUser(string userId)
+        {
+            ViewBag.UserId = userId;
+            ViewBag.Perm = GetPermission();
+            return View();
+        }
+
+        [SupportFilter(ActionName = "Allot")]
+        public JsonResult GetRoleListByUser(GridPager pager, string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+                return Json(0);
+            var userList = m_BLL.GetRoleByUserId(ref pager, userId);
+            var jsonData = new
+            {
+                total = pager.TotalRows,
+                rows = (
+                    from r in userList
+                    select new SysRoleModel()
+                    {
+                        Id = r.Id,
+                        Name = r.Name,
+                        Description = r.Description,
+                        Flag = r.flag == "0" ? "0" : "1",
+                    }
+                ).ToArray()
+            };
+            return Json(jsonData);
+        }
+        #endregion
+        [SupportFilter(ActionName = "Save")]
+        public JsonResult UpdateUserRoleByUserId(string userId, string roleIds)
+        {
+            string[] arr = roleIds.Split(',');
+
+
+            if (m_BLL.UpdateSysRoleSysUser(userId, arr))
+            {
+                LogHandler.WriteServiceLog(GetUserId(), "Ids:" + roleIds, "成功", "分配角色", "用户设置");
+                return Json(JsonHandler.CreateMessage(1, Suggestion.SetSucceed), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                string ErrorCol = errors.Error;
+                LogHandler.WriteServiceLog(GetUserId(), "Ids:" + roleIds, "失败", "分配角色", "用户设置");
+                return Json(JsonHandler.CreateMessage(0, Suggestion.SetFail), JsonRequestBehavior.AllowGet);
+            }
+
+        }
         #region 导出到PDF EXCEL WORD
         //public ActionResult Reporting(string type = "PDF", string queryStr = "", int rows = 0, int page = 1)
         //{
-            ////选择了导出全部
-            //if (rows == 0 && page == 0)
-            //{
-            //    rows = 9999999;
-            //    page = 1;
-            //}
-            //GridPager pager = new GridPager()
-            //{
-            //    Rows = rows,
-            //    Page = page,
-            //    Sort = "Id",
-            //    Order = "desc"
-            //};
-            //List<SysUserModel> ds = m_BLL.GetList(ref pager, queryStr);
-            //LocalReport localReport = new LocalReport();
-            //localReport.ReportPath = Server.MapPath("~/Reports/SysUserReport.rdlc");
-            //ReportDataSource reportDataSource = new ReportDataSource("DataSet1", ds);
-            //localReport.DataSources.Add(reportDataSource);
-            //string reportType = type;
-            //string mimeType;
-            //string encoding;
-            //string fileNameExtension;
+        ////选择了导出全部
+        //if (rows == 0 && page == 0)
+        //{
+        //    rows = 9999999;
+        //    page = 1;
+        //}
+        //GridPager pager = new GridPager()
+        //{
+        //    Rows = rows,
+        //    Page = page,
+        //    Sort = "Id",
+        //    Order = "desc"
+        //};
+        //List<SysUserModel> ds = m_BLL.GetList(ref pager, queryStr);
+        //LocalReport localReport = new LocalReport();
+        //localReport.ReportPath = Server.MapPath("~/Reports/SysUserReport.rdlc");
+        //ReportDataSource reportDataSource = new ReportDataSource("DataSet1", ds);
+        //localReport.DataSources.Add(reportDataSource);
+        //string reportType = type;
+        //string mimeType;
+        //string encoding;
+        //string fileNameExtension;
 
-            //string deviceInfo =
-            //    "<DeviceInfo>" +
-            //    "<OutPutFormat>" + type + "</OutPutFormat>" +
-            //    "<PageWidth>11in</PageWidth>" +
-            //    "<PageHeight>11in</PageHeight>" +
-            //    "<MarginTop>0.5in</MarginTop>" +
-            //    "<MarginLeft>1in</MarginLeft>" +
-            //    "<MarginRight>1in</MarginRight>" +
-            //    "<MarginBottom>0.5in</MarginBottom>" +
-            //    "</DeviceInfo>";
-            //Warning[] warnings;
-            //string[] streams;
-            //byte[] renderedBytes;
+        //string deviceInfo =
+        //    "<DeviceInfo>" +
+        //    "<OutPutFormat>" + type + "</OutPutFormat>" +
+        //    "<PageWidth>11in</PageWidth>" +
+        //    "<PageHeight>11in</PageHeight>" +
+        //    "<MarginTop>0.5in</MarginTop>" +
+        //    "<MarginLeft>1in</MarginLeft>" +
+        //    "<MarginRight>1in</MarginRight>" +
+        //    "<MarginBottom>0.5in</MarginBottom>" +
+        //    "</DeviceInfo>";
+        //Warning[] warnings;
+        //string[] streams;
+        //byte[] renderedBytes;
 
-            //renderedBytes = localReport.Render(
-            //    reportType,
-            //    deviceInfo,
-            //    out mimeType,
-            //    out encoding,
-            //    out fileNameExtension,
-            //    out streams,
-            //    out warnings
-            //    );
-            //return File(renderedBytes, mimeType);
+        //renderedBytes = localReport.Render(
+        //    reportType,
+        //    deviceInfo,
+        //    out mimeType,
+        //    out encoding,
+        //    out fileNameExtension,
+        //    out streams,
+        //    out warnings
+        //    );
+        //return File(renderedBytes, mimeType);
         //}
         #endregion
     }
