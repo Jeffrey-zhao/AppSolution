@@ -12,13 +12,13 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[SysException](
-    [Id] [varchar](50) NOT NULL, --GUID
-    [HelpLink] [varchar](500) NULL,--帮助链接
-    [Message] [varchar](500) NULL,--异常信息
-    [Source] [varchar](500) NULL,--来源
+    [Id] [nvarchar](50) NOT NULL, --GUID
+    [HelpLink] [nvarchar](500) NULL,--帮助链接
+    [Message] [nvarchar](500) NULL,--异常信息
+    [Source] [nvarchar](500) NULL,--来源
     [StackTrace] [text] NULL,--堆栈
-    [TargetSite] [varchar](500) NULL,--目标页
-    [Data] [varchar](500) NULL,--程序集
+    [TargetSite] [nvarchar](500) NULL,--目标页
+    [Data] [nvarchar](500) NULL,--程序集
     [CreateTime] [datetime] NULL,--发生时间
  CONSTRAINT [PK_SysException] PRIMARY KEY CLUSTERED 
 (

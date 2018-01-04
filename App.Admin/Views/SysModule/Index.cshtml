@@ -182,7 +182,7 @@
                         $.post("@Url.Action("Delete")?id=" + row.Id, function (data) {
                             if (data.Type == 1)
                                 $("#List").treegrid('reload');
-                            $.messageBox5s('提示', data.message);
+                            $.messageBox5s('提示', data.Message);
                         }, "json");
 
                     }

@@ -58,6 +58,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -75,6 +76,7 @@
     <Compile Include="HomeBLL.cs" />
     <Compile Include="SysModuleOperateBLL.cs" />
     <Compile Include="SysModuleBLL.cs" />
+    <Compile Include="SysRightBLL.cs" />
     <Compile Include="SysRoleBLL.cs" />
     <Compile Include="SysSampleBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,12 +12,12 @@ SET ANSI_PADDING ON
 GO
 
 CREATE TABLE [dbo].[SysLog](
-    [Id] [varchar](50) NOT NULL, --GUID
-    [Operator] [varchar](50) NULL,--操作人
-    [Message] [varchar](500) NULL,--操作信息
-    [Result] [varchar](20) NULL,--结果
-    [Type] [varchar](20) NULL,--操作类型
-    [Module] [varchar](20) NULL,--操作模块
+    [Id] [nvarchar](50) NOT NULL, --GUID
+    [Operator] [nvarchar](50) NULL,--操作人
+    [Message] [nvarchar](500) NULL,--操作信息
+    [Result] [nvarchar](20) NULL,--结果
+    [Type] [nvarchar](20) NULL,--操作类型
+    [Module] [nvarchar](20) NULL,--操作模块
     [CreateTime] [datetime] NULL,--操作时间
  CONSTRAINT [PK_SysLog] PRIMARY KEY CLUSTERED 
 (

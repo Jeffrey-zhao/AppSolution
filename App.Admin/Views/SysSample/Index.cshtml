@@ -77,18 +77,19 @@
     @Html.ToolButton("btnReload", "icon-reload", Suggestion.Reload, false)
 </div>
 <div id="List"></div>
+@Html.Partial("~/Views/Shared/_Partial_AutoGrid.cshtml")
 <script type="text/javascript">
     $(function () {
 
-        $(window).resize(function () {
-            $('#List').datagrid('resize', {
-                width: $(window).width() - 10,
-                height: $(window).height() - 35
-            }).datagrid('resize', {
-                width: $(window).width() - 10,
-                height: $(window).height() - 35
-            });
-        });
+        //$(window).resize(function () {
+        //    $('#List').datagrid('resize', {
+        //        width: $(window).width() - 10,
+        //        height: $(window).height() - 35
+        //    }).datagrid('resize', {
+        //        width: $(window).width() - 10,
+        //        height: $(window).height() - 35
+        //    });
+        //});
 
         $('#List').datagrid({
             url: '/SysSample/GetList',
