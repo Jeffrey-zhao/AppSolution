@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Scripts\jQuery.validator.js" />
     <Content Include="Views\SysSample\Reporting.cshtml" />
     <Content Include="Views\SysUser\Create.cshtml" />
     <Content Include="Views\SysUser\Index.cshtml" />
