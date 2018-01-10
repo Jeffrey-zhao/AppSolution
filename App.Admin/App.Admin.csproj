@@ -157,6 +157,7 @@
     <Compile Include="Controllers\SysSampleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\SysUserController.cs" />
+    <Compile Include="Core\CultureAwareHttpModule.cs" />
     <Compile Include="Core\ExtendMvcHtml.cs" />
     <Compile Include="Core\LogHandler.cs" />
     <None Include="Core\VerifyCodeHandler.ashx" />
@@ -722,6 +723,10 @@
     <ProjectReference Include="..\App.IDAL\App.IDAL.csproj">
       <Project>{106EB955-3408-4A69-A8EB-861E1DD291AA}</Project>
       <Name>App.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Lang\App.Lang.csproj">
+      <Project>{1d766988-cb07-4b63-bcea-ca3e9dd5a439}</Project>
+      <Name>App.Lang</Name>
     </ProjectReference>
     <ProjectReference Include="..\App.Models\App.Models.csproj">
       <Project>{f60d30ec-7db9-451c-81e4-db3423d77818}</Project>

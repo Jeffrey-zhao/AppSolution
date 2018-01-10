@@ -1,9 +1,13 @@
 ﻿@using App.Common;
 @using App.Admin.Core;
+@using App.Lang;
+@using System.Threading;
+@using System.Globalization;
 @model IEnumerable<App.Models.Sys.SysSampleModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Index_Layout.cshtml";
+    CultureInfo info = Thread.CurrentThread.CurrentCulture;
 }
 
 <div id="modalwindow" class="easyui-window" data-options="modal:true,closed:true,minimizable:false,shadow:false"></div>
@@ -68,13 +72,12 @@
             </span>
         </span>
     </a>*@
-    @Html.ToolButton("btnQuery", "icon-search", Suggestion.Query, true)
-    @Html.ToolButton("btnCreate", "icon-add", Suggestion.Create, true)
-    @Html.ToolButton("btnEdit", "icon-edit", Suggestion.Edit, true)
-    @Html.ToolButton("btnDetails", "icon-details", Suggestion.Details, true)
-    @Html.ToolButton("btnDelete", "icon-remove", Suggestion.Delete, true)
-    @Html.ToolButton("btnExport", "icon-export", Suggestion.Export, true)
-    @Html.ToolButton("btnReload", "icon-reload", Suggestion.Reload, false)
+    @Html.ToolButton("btnQuery", "icon-search", BaseRes.Query, true)
+    @Html.ToolButton("btnCreate", "icon-add", BaseRes.Create, true)
+    @Html.ToolButton("btnEdit", "icon-edit", BaseRes.Edit, true)
+    @Html.ToolButton("btnDetails", "icon-details", BaseRes.Details, true)
+    @Html.ToolButton("btnDelete", "icon-remove", BaseRes.Delete, true)
+    @Html.ToolButton("btnExport", "icon-export", BaseRes.Export, true)
 </div>
 <div id="List"></div>
 @Html.Partial("~/Views/Shared/_Partial_AutoGrid.cshtml")
@@ -139,7 +142,7 @@
     $(function () {
 
         $("#btnCreate").click(function () {
-            $("#modalwindow").html("<iframe width='100%' height='98%' scrolling='no' frameborder='0'' src='/SysSample/Create'></iframe>");
+            $("#modalwindow").html("<iframe width='100%' height='98%' scrolling='no' frameborder='0'' src='/@info.Name/SysSample/Create'></iframe>");
             $("#modalwindow").window({ title: '@Suggestion.Create', width: 700, height: 400, iconCls: 'icon-add' }).window('open');
         });
         $("#btnEdit").click(function () {
