@@ -10,6 +10,7 @@ using App.Models;
 using App.Models.Sys;
 using Microsoft.Practices.Unity;
 using App.Admin.Core;
+using Microsoft.Reporting.WebForms;
 
 namespace App.Admin.Controllers
 {
@@ -133,6 +134,58 @@ namespace App.Admin.Controllers
         public ActionResult Test()
         {
             return View();
+        }
+
+        //export
+        public ActionResult Reporting(string type = "PDF", string queryStr = "", int rows = 0, int page = 1)
+        {
+            //选择了导出全部
+            if (rows == 0 && page == 0)
+            {
+                rows = 9999999;
+                page = 1;
+            }
+            GridPager pager = new GridPager()
+            {
+                Rows = rows,
+                Page = page,
+                Sort = "Id",
+                Order = "desc"
+            };
+            List<SysSampleModel> ds = m_BLL.GetList(ref pager, queryStr);
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reports/SysSampleReport.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource("DataSet1", ds);
+            localReport.DataSources.Add(reportDataSource);
+            string reportType = type;
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+
+            string deviceInfo =
+                "<DeviceInfo>" +
+                "<OutPutFormat>" + type + "</OutPutFormat>" +
+                "<PageWidth>11in</PageWidth>" +
+                "<PageHeight>11in</PageHeight>" +
+                "<MarginTop>0.5in</MarginTop>" +
+                "<MarginLeft>1in</MarginLeft>" +
+                "<MarginRight>1in</MarginRight>" +
+                "<MarginBottom>0.5in</MarginBottom>" +
+                "</DeviceInfo>";
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+
+            renderedBytes = localReport.Render(
+                reportType,
+                deviceInfo,
+                out mimeType,
+                out encoding,
+                out fileNameExtension,
+                out streams,
+                out warnings
+                );
+            return File(renderedBytes, mimeType);
         }
     }
 }

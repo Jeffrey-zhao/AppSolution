@@ -14,64 +14,64 @@
 <div class="mvctool">
     <input id="txtQuery" type="text" class="searchText">
     @*<a id="btnQuery" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-search" style="padding-left: 20px;">
-                @Suggestion.Query
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-search" style="padding-left: 20px;">
+                    @Suggestion.Query
+                </span>
             </span>
-        </span>
-    </a>
-    <div class="datagrid-btn-separator">
-    </div>
-    <a id="btnCreate" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-add" style="padding-left: 20px;">
-                @Suggestion.Create
+        </a>
+        <div class="datagrid-btn-separator">
+        </div>
+        <a id="btnCreate" style="float: left;" class="l-btn l-btn-plain">
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-add" style="padding-left: 20px;">
+                    @Suggestion.Create
+                </span>
             </span>
-        </span>
-    </a>
-    <div class="datagrid-btn-separator">
-    </div>
-    <a id="btnEdit" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-edit" style="padding-left: 20px;">
-                @Suggestion.Edit
+        </a>
+        <div class="datagrid-btn-separator">
+        </div>
+        <a id="btnEdit" style="float: left;" class="l-btn l-btn-plain">
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-edit" style="padding-left: 20px;">
+                    @Suggestion.Edit
+                </span>
             </span>
-        </span>
-    </a>
-    <div class="datagrid-btn-separator">
-    </div>
-    <a id="btnDetails" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-details" style="padding-left: 20px;">
-                @Suggestion.Details
+        </a>
+        <div class="datagrid-btn-separator">
+        </div>
+        <a id="btnDetails" style="float: left;" class="l-btn l-btn-plain">
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-details" style="padding-left: 20px;">
+                    @Suggestion.Details
+                </span>
             </span>
-        </span>
-    </a>
-    <div class="datagrid-btn-separator">
-    </div>
-    <a id="btnDelete" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-remove" style="padding-left: 20px;">
-                @Suggestion.Delete
+        </a>
+        <div class="datagrid-btn-separator">
+        </div>
+        <a id="btnDelete" style="float: left;" class="l-btn l-btn-plain">
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-remove" style="padding-left: 20px;">
+                    @Suggestion.Delete
+                </span>
             </span>
-        </span>
-    </a>
-    <div class="datagrid-btn-separator">
-    </div>
-    <a id="btnExport" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-export" style="padding-left: 20px;">
-                @Suggestion.Export
+        </a>
+        <div class="datagrid-btn-separator">
+        </div>
+        <a id="btnExport" style="float: left;" class="l-btn l-btn-plain">
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-export" style="padding-left: 20px;">
+                    @Suggestion.Export
+                </span>
             </span>
-        </span>
-    </a>
-    <a id="btnReload" style="float: left;" class="l-btn l-btn-plain">
-        <span class="l-btn-left">
-            <span class="l-btn-text icon-reload" style="padding-left: 20px;">
-                @Suggestion.Reload
+        </a>
+        <a id="btnReload" style="float: left;" class="l-btn l-btn-plain">
+            <span class="l-btn-left">
+                <span class="l-btn-text icon-reload" style="padding-left: 20px;">
+                    @Suggestion.Reload
+                </span>
             </span>
-        </span>
-    </a>*@
+        </a>*@
     @Html.ToolButton("btnQuery", "icon-search", BaseRes.Query, true)
     @Html.ToolButton("btnCreate", "icon-add", BaseRes.Create, true)
     @Html.ToolButton("btnEdit", "icon-edit", BaseRes.Edit, true)
@@ -159,7 +159,7 @@
                 $("#modalwindow").html("<iframe width='100%' height='98%' scrolling='no' frameborder='0' src='/SysSample/Details?id=" + row.Id + "&Ieguid=" + GetGuid() + "'></iframe>");
                 $("#modalwindow").window({ title: '@Suggestion.Details', width: 500, height: 300, iconCls: 'icon-details' }).window('open');
             } else { $.messageBox5s('@Suggestion.Tip', '@Suggestion.PlaseChooseToOperatingRecords'); }
-            });
+        });
         $("#btnQuery").click(function () {
             var queryStr = $("#txtQuery").val();
             //如果查询条件为空默认查询全部
@@ -175,17 +175,23 @@
             var row = $('#List').datagrid('getSelected');
             if (row != null) {
                 $.messager.confirm('@Suggestion.Tip', '@Suggestion.YouWantToDeleteTheSelectedRecords', function (r) {
-                        if (r) {
-                            $.post("/SysSample/Delete?id=" + row.Id, function (data) {
-                                if (data.Type == 1)
-                                    $("#List").datagrid('load');
-                                $.messageBox5s('@Suggestion.Tip', data.Message);
-                            }, "json");
+                    if (r) {
+                        $.post("/SysSample/Delete?id=" + row.Id, function (data) {
+                            if (data.Type == 1)
+                                $("#List").datagrid('load');
+                            $.messageBox5s('@Suggestion.Tip', data.Message);
+                        }, "json");
 
-                        }
-                    });
+                    }
+                });
             } else { $.messageBox5s('@Suggestion.Tip', '@Suggestion.PlaseChooseToOperatingRecords'); }
         });
+
+        $("#btnExport").click(function () {
+            $("#modalwindow").html("<iframe width='100%' height='98%' scrolling='no' frameborder='0' src='/SysSample/Reporting?&Ieguid=" + GetGuid() + "'></iframe>");
+            $("#modalwindow").window({ title: '@Suggestion.Export', width: $(window).width(), height: $(window).height(), iconCls: 'icon-export'}).window('open');
+        });
+
         function GetGuid() {
             return $.guid++;
         }

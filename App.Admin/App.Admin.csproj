@@ -75,6 +75,7 @@
       <HintPath>..\packages\Unity.2.0\lib\20\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -160,6 +161,11 @@
     <Compile Include="Core\CultureAwareHttpModule.cs" />
     <Compile Include="Core\ExtendMvcHtml.cs" />
     <Compile Include="Core\LogHandler.cs" />
+    <Compile Include="Reports\AppDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppDBDataSet.xsd</DependentUpon>
+    </Compile>
     <None Include="Core\VerifyCodeHandler.ashx" />
     <Compile Include="Core\SupportFilterAttribute.cs" />
     <Compile Include="Core\VerifyCodeHandler.ashx.cs">
@@ -170,6 +176,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Views\SysSample\Reporting.cshtml" />
     <Content Include="Views\SysUser\Create.cshtml" />
     <Content Include="Views\SysUser\Index.cshtml" />
     <Content Include="Views\SysUser\Edit.cshtml" />
@@ -610,6 +617,17 @@
     <Content Include="Scripts\easyui\src\jquery.tabs.js" />
     <Content Include="Scripts\easyui\src\jquery.window.js" />
     <Content Include="Scripts\home.js" />
+    <Content Include="Reports\AppDBDataSet.xsc">
+      <DependentUpon>AppDBDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\AppDBDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppDBDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\AppDBDataSet.xss">
+      <DependentUpon>AppDBDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.7.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js" />
@@ -738,6 +756,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\SysSampleReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
