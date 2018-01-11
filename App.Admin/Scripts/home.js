@@ -76,10 +76,11 @@ $(function () {
 });
 $(function () {
     /*为选项卡绑定右键*/
-    $(".tabs li").on('contextmenu', function (e) {
-        /*选中当前触发事件的选项卡 */
-        var subtitle = $(this).text();
-        $('#mainTab').tabs('select', subtitle);
+    //$(".tabs li").on('contextmenu', function (e) {}) 不起作用
+    $(".tabs li").live('contextmenu', function (e) {
+        ///*选中当前触发事件的选项卡 */
+        //var subtitle = $(this).text();
+        //$('#mainTab').tabs('select', subtitle);
         //显示快捷菜单
         $('#tab_menu').menu('show', {
             left: e.pageX,
@@ -91,6 +92,7 @@ $(function () {
     $(".tabs li").live('click', function (e) {
         /*选中当前触发事件的选项卡 */
         var subtitle = $(this).text();
+        alert(subtitle);
         $('#mainTab').tabs('select', subtitle);
         return false;
     });
