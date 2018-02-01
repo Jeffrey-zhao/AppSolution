@@ -20,6 +20,12 @@
         <AssociationConnector Association="AppDB.FK_SysRight_SysRole" />
         <AssociationConnector Association="AppDB.FK_SysRightOperate_SysRight" />
         <AssociationConnector Association="AppDB.SysRoleSysUser" />
+        <EntityTypeShape EntityType="AppDB.MIS_Article" Width="1.5" PointX="11.625" PointY="8.375" />
+        <EntityTypeShape EntityType="AppDB.MIS_Article_Category" Width="1.5" PointX="0.75" PointY="11.375" />
+        <AssociationConnector Association="AppDB.FK_MIS_Article_MIS_Article_Category" />
+        <AssociationConnector Association="AppDB.FK_MIS_Article_SysUser" />
+        <AssociationConnector Association="AppDB.FK_MIS_Article_SysUser1" />
+        <AssociationConnector Association="AppDB.FK_MIS_Article_Category_MIS_Article_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

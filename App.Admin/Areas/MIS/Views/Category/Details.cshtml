@@ -1,0 +1,139 @@
+﻿@model App.Models.MIS.MIS_Article_CategoryModel
+@using App.Common;
+@using App.Admin.Core;
+
+@{
+    ViewBag.Title = Suggestion.Details;
+    Layout = "~/Views/Shared/_Index_LayoutEdit.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#btnReturn").click(function () {
+            window.parent.frameReturnByClose();
+        });
+    });
+</script>
+
+<div class="mvctool bgb">
+    @Html.ToolButton("btnReturn", "icon-return", "返回", false)
+</div>
+@using (Html.BeginForm("Details", "/MIS/Category", null, FormMethod.Post, new { Id = "DetialsForm" }))
+{
+    @Html.ValidationSummary(true)
+    <table class="fromEditTable setTextWidth300">
+        <tbody>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.Id)：
+                </td>
+                <td style="width:310px">
+                    @Html.EditorFor(model => model.Id)
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.Id)</td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.ChannelId)：
+                </td>
+                <td style="width:310px">
+                    @Html.EditorFor(model => model.ChannelId)
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.ChannelId)</td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.Name)：
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Name)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.ParentId)：
+                </td>
+
+                <td>
+                    @Html.EditorFor(model => model.ParentId)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.ParentId)
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.Sort)：
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(model => model.Sort)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Sort)
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.BodyContent)：
+                </td>
+
+                <td>
+                    @Html.EditorFor(model => model.BodyContent)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.BodyContent)
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.CreateTime)：
+
+                </td>
+
+                <td>
+                    @Html.TextBoxFor(model => model.CreateTime)
+
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.CreateTime)
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.ImgUrl)：
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.ImgUrl)
+
+                </td>
+
+                <td>
+                    @Html.ValidationMessageFor(model => model.ImgUrl)
+                </td>
+            </tr>
+            <tr>
+                <td style="width:100px; text-align:right;">
+                    @Html.LabelFor(model => model.Enable)：
+
+                </td>
+
+                <td>
+                    @Html.CheckBoxFor(model => model.Enable)
+
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.Enable)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+
+
+

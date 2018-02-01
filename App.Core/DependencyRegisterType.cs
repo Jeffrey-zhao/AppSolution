@@ -8,6 +8,10 @@ using App.DAL;
 using App.IBLL;
 using App.IDAL;
 using Microsoft.Practices.Unity;
+using App.MIS.IBLL;
+using App.MIS.BLL;
+using App.MIS.IDAL;
+using App.MIS.DAL;
 
 namespace App.Core
 {
@@ -44,6 +48,13 @@ namespace App.Core
 
             container.RegisterType<ISysUserBLL, SysUserBLL>();
             container.RegisterType<ISysUserRepository, SysUserRepository>();
+
+            //MIS
+            container.RegisterType<IMIS_ArticleBLL, MIS_ArticleBLL>();
+            container.RegisterType<IMIS_ArticleRepository, MIS_ArticleRepository>();
+
+            container.RegisterType<IMIS_Article_CategoryBLL, MIS_Article_CategoryBLL>();
+            container.RegisterType<IMIS_Article_CategoryRepository, MIS_Article_CategoryRepository>();
         }
     }
 }

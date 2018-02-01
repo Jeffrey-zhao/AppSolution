@@ -37,6 +37,8 @@ namespace App.Models
         public DbSet<SysRole> SysRole { get; set; }
         public DbSet<SysSample> SysSample { get; set; }
         public DbSet<SysUser> SysUser { get; set; }
+        public DbSet<MIS_Article> MIS_Article { get; set; }
+        public DbSet<MIS_Article_Category> MIS_Article_Category { get; set; }
     
         public virtual ObjectResult<P_Sys_GetRightOperate_Result> P_Sys_GetRightOperate(string userId, string url)
         {

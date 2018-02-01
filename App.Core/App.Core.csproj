@@ -85,6 +85,22 @@
       <Project>{106eb955-3408-4a69-a8eb-861e1dd291aa}</Project>
       <Name>App.IDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\App.MIS.BLL\App.MIS.BLL.csproj">
+      <Project>{344106F4-9419-4F31-B21F-5A24D9181556}</Project>
+      <Name>App.MIS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.MIS.DAL\App.MIS.DAL.csproj">
+      <Project>{96032D69-15D8-40DC-9A3D-67A07A369A7D}</Project>
+      <Name>App.MIS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.MIS.IBLL\App.MIS.IBLL.csproj">
+      <Project>{7C66DF4D-99FD-48A3-B5FC-88965B499A24}</Project>
+      <Name>App.MIS.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.MIS.IDAL\App.MIS.IDAL.csproj">
+      <Project>{326DCCCC-F223-49E7-B883-1BB91E88FAB1}</Project>
+      <Name>App.MIS.IDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -17,6 +17,8 @@ namespace App.Models
         public SysUser()
         {
             this.SysRole = new HashSet<SysRole>();
+            this.MIS_Article = new HashSet<MIS_Article>();
+            this.MIS_Article1 = new HashSet<MIS_Article>();
         }
     
         public string Id { get; set; }
@@ -54,5 +56,7 @@ namespace App.Models
         public string Attach { get; set; }
     
         public virtual ICollection<SysRole> SysRole { get; set; }
+        public virtual ICollection<MIS_Article> MIS_Article { get; set; }
+        public virtual ICollection<MIS_Article> MIS_Article1 { get; set; }
     }
 }

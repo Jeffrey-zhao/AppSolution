@@ -148,6 +148,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\MIS\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\MIS\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\MIS\Controllers\ManageArticleController.cs" />
+    <Compile Include="Areas\MIS\Controllers\MyArticleController.cs" />
+    <Compile Include="Areas\MIS\MISAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SysExceptionController.cs" />
@@ -166,6 +171,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Content Include="Areas\MIS\Views\web.config" />
+    <Content Include="Areas\MIS\Views\Article\Index.cshtml" />
+    <Content Include="Areas\MIS\Views\Category\Index.cshtml" />
+    <Content Include="Areas\MIS\Views\ManageArticle\Index.cshtml" />
+    <Content Include="Areas\MIS\Views\MyArticle\Index.cshtml" />
+    <Content Include="Areas\MIS\Views\Category\Create.cshtml" />
+    <Content Include="Areas\MIS\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\MIS\Views\Category\Details.cshtml" />
     <None Include="Core\VerifyCodeHandler.ashx" />
     <Compile Include="Core\SupportFilterAttribute.cs" />
     <Compile Include="Core\VerifyCodeHandler.ashx.cs">
@@ -709,6 +722,8 @@
     <Content Include="Views\Shared\_Index_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\MIS\Models\" />
+    <Folder Include="Areas\MIS\Views\Shared\" />
     <Folder Include="Filters\" />
     <Folder Include="Scripts\easyui\demo\" />
   </ItemGroup>
@@ -746,6 +761,10 @@
     <ProjectReference Include="..\App.Lang\App.Lang.csproj">
       <Project>{1d766988-cb07-4b63-bcea-ca3e9dd5a439}</Project>
       <Name>App.Lang</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.MIS.IBLL\App.MIS.IBLL.csproj">
+      <Project>{7C66DF4D-99FD-48A3-B5FC-88965B499A24}</Project>
+      <Name>App.MIS.IBLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\App.Models\App.Models.csproj">
       <Project>{f60d30ec-7db9-451c-81e4-db3423d77818}</Project>
