@@ -18,8 +18,10 @@ namespace App.Admin.Areas.MIS.Controllers
         [Dependency]
         public IMIS_ArticleBLL m_BLL { get; set; }
         ValidationErrors errors = new ValidationErrors();
+        [SupportFilter]
         public ActionResult Index()
         {
+            ViewBag.Perm = GetPermission();
             return View();
         }
         [HttpPost]

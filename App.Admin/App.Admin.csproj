@@ -179,6 +179,9 @@
     <Content Include="Areas\MIS\Views\Category\Create.cshtml" />
     <Content Include="Areas\MIS\Views\Category\Edit.cshtml" />
     <Content Include="Areas\MIS\Views\Category\Details.cshtml" />
+    <Content Include="Areas\MIS\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\MIS\Views\Article\Details.cshtml" />
+    <Content Include="Areas\MIS\Views\Article\Create.cshtml" />
     <None Include="Core\VerifyCodeHandler.ashx" />
     <Compile Include="Core\SupportFilterAttribute.cs" />
     <Compile Include="Core\VerifyCodeHandler.ashx.cs">
